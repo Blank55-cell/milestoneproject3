@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="add.html">Add Book</a>
+    <a href="library.html">Library</a>
+    <a href="search.html">Search</a>
+  </nav>
+
+  <!-- Add Book Form -->
+  <section class="add-book">
+    <h2>Add a Book</h2>
+
+    <form id="bookForm">
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" required>
+
+      <label for="author">Author</label>
+      <input id="author" name="author" type="text" required>
+
+      <label for="chapter">Favourite Chapter</label>
+      <input id="chapter" name="chapter" type="text">
+
+      <label for="notes">Notes / Quotes</label>
+      <textarea id="notes" name="notes"></textarea>
+
+      <label for="status">Reading Status</label>
+      <select id="status" name="status">
+        <option value="to-read">To Read</option>
+        <option value="reading">Reading</option>
+        <option value="finished">Finished</option>
+      </select>
+
+      <button type="submit">Save Book</button>
+    </form>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Library</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="add.html">Add Book</a>
+    <a href="library.html">Library</a>
+    <a href="search.html">Search</a>
+  </nav>
+
+  <!-- Library -->
+  <section class="library">
+    <h2>Your Library</h2>
+
+    <!-- JS will insert book cards here -->
+    <div id="bookList" class="book-grid"></div>
+  </section>
+
+  <!-- Template for book cards -->
+  <template id="bookCardTemplate">
+    <div class="book-card">
+      <h3 class="book-title"></h3>
+      <p class="book-author"></p>
+      <p class="book-status"></p>
+      <button class="view-details">Details</button>
+    </div>
+  </template>
+
+</body>
+</html>
