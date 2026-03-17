@@ -1,0 +1,71 @@
+/* General page style */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(to bottom, #fff7fb, #ffeef5);
+  color: #333;
+}
+
+/* Navigation */
+.nav-bar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 240, 245, 0.7);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #f7dce6;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: #b84a7c;
+  font-weight: 500;
+}
+
+.nav-bar a:hover {
+  color: #d86a9a;
+}
+
+/* Auth container */
+.auth-container {
+  max-width: 380px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #ffffffcc;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(200, 120, 150, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+/* Panel headings */
+.auth-panel h2 {
+  margin-top: 0;
+  color: #b84a7c;
+  font-weight: 600;
+}
+
+/* Forms */
+label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+  font-size: 0.9rem;
+  color: #7a3f5a;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #f3c9d8;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #d86a9a;
+  box-shadow: 0 0 0 3px rgba(216, 106, 154, 0.2);
+}
+
+
