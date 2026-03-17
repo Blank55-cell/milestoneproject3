@@ -3,20 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search Books</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="sakura-bg">
 
     <!-- Navigation -->
-<nav>
-  
-    <li><a href="index.html">Home</a></li>
-    <li><a href="add.html">Add Book</a></li>
-    <li><a href="library.html">Library</a></li>
-    <li><a href="search.html">Search</a></li>
-  
-</nav>
+    <nav class="nav-bar soft-nav">
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="add.html">Add Book</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="search.html" class="active-link">Search</a></li>
+        </ul>
+    </nav>
 
-    
+    <section class="search-container soft-card">
+        <h2 class="panel-title">Search Your Library</h2>
+        <p class="search-desc">Find books by title, author, or keywords from your notes.</p>
+
+        <form id="searchForm" class="search-form">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Search your saved books..."
+                required
+            >
+            <button type="submit" class="btn-sakura">Search</button>
+        </form>
+
+        <div id="searchResults" class="results-area">
+            <!-- JS will insert results here -->
+        </div>
+    </section>
+
 </body>
 </html>

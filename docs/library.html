@@ -4,21 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Library</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="sakura-bg">
 
   <!-- Navigation -->
-  <nav class="nav-bar">
+  <nav class="nav-bar soft-nav">
     <a href="index.html">Home</a>
     <a href="add.html">Add Book</a>
-    <a href="library.html">Library</a>
+    <a href="library.html" class="active-link">Library</a>
     <a href="search.html">Search</a>
   </nav>
 
   <!-- Library -->
-  <section class="library">
-    <h2>Your Library</h2>
+  <section class="library-container soft-card">
+    <h2 class="panel-title">Your Library</h2>
+    <p class="library-desc">All the books you've added will appear here. Click on any book to view details, notes, and progress.</p>
 
     <!-- JS will insert book cards here -->
     <div id="bookList" class="book-grid"></div>
@@ -26,13 +27,14 @@
 
   <!-- Template for book cards -->
   <template id="bookCardTemplate">
-    <div class="book-card">
+    <div class="book-card petal-card">
       <h3 class="book-title"></h3>
       <p class="book-author"></p>
       <p class="book-status"></p>
-      <button class="view-details">Details</button>
+      <button class="view-details btn-sakura">Details</button>
     </div>
   </template>
 
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-/* General page style */
+/* Base layout */
 body {
   margin: 0;
   padding: 0;
@@ -27,45 +27,225 @@ body {
   color: #d86a9a;
 }
 
-/* Auth container */
+.active-link {
+  border-bottom: 2px solid #d86a9a;
+}
+
+/* General card style */
+.soft-card {
+  background: #ffffffcc;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  box-shadow: 0 4px 18px rgba(200, 120, 150, 0.15);
+}
+
+/* Slight blossom accent */
+.petal-card {
+  border: 1px solid #f3d4e0;
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: #fff;
+}
+
+/* Titles */
+.panel-title {
+  color: #b84a7c;
+  margin: 0 0 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Buttons */
+.btn-sakura {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  background: #d86a9a;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-sakura:hover {
+  background: #c25788;
+}
+
+.btn-outline {
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #d86a9a;
+  border-radius: 8px;
+  color: #b84a7c;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: #ffe6f0;
+}
+
+/* Auth pages */
 .auth-container {
   max-width: 380px;
   margin: 4rem auto;
   padding: 2rem;
   background: #ffffffcc;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(200, 120, 150, 0.15);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 18px rgba(200, 120, 150, 0.15);
 }
 
-/* Panel headings */
-.auth-panel h2 {
-  margin-top: 0;
-  color: #b84a7c;
-  font-weight: 600;
-}
-
-/* Forms */
-label {
+.auth-form label {
   display: block;
   margin: 1rem 0 0.3rem;
   font-size: 0.9rem;
   color: #7a3f5a;
 }
 
-input {
+.auth-form input {
   width: 100%;
   padding: 0.7rem;
   border: 1px solid #f3c9d8;
   border-radius: 8px;
   background: #fff;
-  font-size: 1rem;
 }
 
-input:focus {
+.auth-form input:focus {
   outline: none;
   border-color: #d86a9a;
   box-shadow: 0 0 0 3px rgba(216, 106, 154, 0.2);
+}
+
+.soft-link {
+  color: #b84a7c;
+  text-decoration: none;
+}
+
+.soft-link:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Home page */
+.intro-container {
+  text-align: center;
+  max-width: 700px;
+}
+
+.intro-title {
+  font-size: 2.4rem;
+  color: #b84a7c;
+  margin-bottom: 0.5rem;
+}
+
+.intro-text {
+  color: #7a3f5a;
+  margin-bottom: 2rem;
+}
+
+.intro-actions {
+  margin-top: 1.5rem;
+}
+
+/* About */
+.about-section {
+  max-width: 700px;
+  text-align: center;
+}
+
+.about-text {
+  color: #7a3f5a;
+  line-height: 1.6;
+}
+
+/* Features */
+.features-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  color: #b84a7c;
+}
+
+.feature-card p {
+  color: #7a3f5a;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  color: #7a3f5a;
+  background: rgba(255, 240, 245, 0.7);
+  border-top: 1px solid #f7dce6;
+}
+
+/* Search page */
+.search-container {
+  max-width: 600px;
+  text-align: center;
+}
+
+.search-desc {
+  color: #7a3f5a;
+  margin-bottom: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.7rem;
+  border: 1px solid #f3c9d8;
+  border-radius: 8px;
+}
+
+.results-area {
+  margin-top: 2rem;
+}
+
+/* Library */
+.library-container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.library-desc {
+  color: #7a3f5a;
+  margin-bottom: 2rem;
+}
+
+.book-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.book-card h3 {
+  margin-top: 0;
+  color: #b84a7c;
+}
+
+.book-card p {
+  color: #7a3f5a;
 }
 
 

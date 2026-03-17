@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Book</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="sakura-bg">
 
   <!-- Navigation -->
   <nav class="nav-bar">
     <a href="index.html">Home</a>
-    <a href="add.html">Add Book</a>
+    <a href="add.html" class="active-link">Add Book</a>
     <a href="library.html">Library</a>
     <a href="search.html">Search</a>
   </nav>
 
   <!-- Add Book Form -->
-  <section class="add-book">
-    <h2>Add a Book</h2>
+  <section class="add-book soft-card">
+    <h2 class="panel-title">Add a Book</h2>
 
-    <form id="bookForm">
+    <form id="bookForm" class="auth-form">
       <label for="title">Title</label>
       <input id="title" name="title" type="text" required>
 
@@ -31,18 +31,19 @@
       <input id="chapter" name="chapter" type="text">
 
       <label for="notes">Notes / Quotes</label>
-      <textarea id="notes" name="notes"></textarea>
+      <textarea id="notes" name="notes" class="notes-box"></textarea>
 
       <label for="status">Reading Status</label>
-      <select id="status" name="status">
+      <select id="status" name="status" class="status-select">
         <option value="to-read">To Read</option>
         <option value="reading">Reading</option>
         <option value="finished">Finished</option>
       </select>
 
-      <button type="submit">Save Book</button>
+      <button type="submit" class="btn-sakura">Save Book</button>
     </form>
   </section>
 
 </body>
 </html>
+

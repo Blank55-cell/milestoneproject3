@@ -141,17 +141,29 @@ The UX goal is to keep everything obvious: clear buttons, simple forms, and page
 
 Notes on structure, missing attributes, or layout issues.
 
+| Bug | Root Issue | How I Fixed It |
+|-----|------------|----------------|
+
+
 ---
 
 ## CSS Bug Report
 
 Styling inconsistencies, spacing problems, or responsiveness issues.
 
+| Bug | Root Issue | How I Fixed It |
+|-----|------------|----------------|
+
 ---
 
 ## JS Bug Report
 
 Search errors, form handling bugs, or data not saving/displaying correctly.
+
+| Bug | Root Issue | How I Fixed It |
+|-----|------------|----------------|
+
+
 
 ---
 
