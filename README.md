@@ -6,29 +6,30 @@ BookVault is a small project I'm building to keep track of books. Instead of sca
 
 ## Quick Links
 
-- What This Site Is For  
-- Tools (Work in Progress)  
-- Books Covered  
-- Who This Is For  
-- Pages Used in This Project  
-- Features  
-- Current Content  
-- Visual Style  
-- Planned Page Layouts  
-- Roadmap  
-- Website Testing  
-- Deployment  
-- UX  
-- HTML Bug Report  
-- CSS Bug Report  
-- JS Bug Report  
-- Expectations vs Actual Outcomes  
-- Project Purpose  
-- Automated Testing  
-- External Code Attribution  
-- Disclaimer  
-- CSS Validation  
-- Manual Testing  
+- [What This Site Is For](#what-this-site-is-for)  
+- [Tools (Work in Progress)](#tools-work-in-progress)  
+- [Books Covered](#books-covered)  
+- [Who This Is For](#who-this-is-for)  
+- [Pages Used in This Project](#pages-used-in-this-project)  
+- [Features](#features)  
+- [Current Content](#current-content)  
+- [Visual Style](#visual-style)  
+- [Planned Page Layouts](#planned-page-layouts)  
+- [Roadmap](#roadmap)  
+- [Website Testing](#website-testing)  
+- [Deployment](#deployment)  
+- [UX](#ux)  
+- [HTML Bug Report](#html-bug-report)  
+- [CSS Bug Report](#css-bug-report)  
+- [JS Bug Report](#js-bug-report)  
+- [Expectations vs Actual Outcomes](#expectations-vs-actual-outcomes)  
+- [Project Purpose](#project-purpose)  
+- [Automated Testing](#automated-testing)  
+- [External Code Attribution](#external-code-attribution)  
+- [Disclaimer](#disclaimer)  
+- [CSS Validation](#css-validation)  
+- [Manual Testing](#manual-testing)
+  
 
 ---
 
@@ -136,23 +137,32 @@ Deployment will happen once the core features are stable and the UI is consisten
 The UX goal is to keep everything obvious: clear buttons, simple forms, and pages that explain themselves without extra text.
 
 ---
+### HTML Bugs
 
-## HTML Bug Report
+| Bug | Root Cause | Fix |
+|-----|------------|------|
+| CSS not loading on Add Book page | Linked to `assets/style.css` instead of `assets/css/style.css` | Updated `<link>` path to correct folder |
+| Navigation list not rendering correctly | Used `<li>` elements without wrapping them in a `<ul>` | Replaced loose `<li>` tags with a proper `<ul>` structure |
+| Panels not switching on auth page | Missing `hidden` class on some panels | Added `class="hidden"` to inactive panels |
+| Search page layout breaking | Forgot to close a `<div>` around the search container | Closed the missing tag and re‑indented the section |
+| Library page not showing book cards | Template ID was correct but JS was targeting the wrong container ID | Updated JS to use `bookList` (matching HTML) |
+| Textarea not styled | Forgot to add class name to `<textarea>` | Added `class="notes-box"` to match CSS |
 
-Notes on structure, missing attributes, or layout issues.
-
-| Bug | Root Issue | How I Fixed It |
-|-----|------------|----------------|
 
 
 ---
 
-## CSS Bug Report
+### CSS Bugs
 
-Styling inconsistencies, spacing problems, or responsiveness issues.
+| Bug | Root Cause | Fix |
+|-----|------------|------|
+| Blossom background not applying | Body was missing `class="sakura-bg"` on some pages | Added the class to all HTML pages |
+| Buttons looked inconsistent | Some pages used raw `<button>` styles instead of `.btn-sakura` | Replaced default buttons with `.btn-sakura` |
+| Navigation bar spacing uneven | Forgot to reset default `<ul>` padding on search page | Added `ul { padding: 0; margin: 0; list-style: none; }` |
+| Soft card shadow too strong | Shadow value was copied from an earlier test | Reduced blur and opacity for a calmer look |
+| Grid layout collapsing on mobile | `minmax()` value too large for small screens | Adjusted to `minmax(180px, 1fr)` |
+| Textarea overflowing container | No width rule applied to `.notes-box` | Added `width: 100%` and matching padding |
 
-| Bug | Root Issue | How I Fixed It |
-|-----|------------|----------------|
 
 ---
 
