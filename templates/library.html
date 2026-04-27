@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Library</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="sakura-bg">
+
+  <nav class="nav-bar soft-nav">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'add_book' %}">Add Book</a>
+    <a href="{% url 'library' %}" class="active-link">Library</a>
+    <a href="{% url 'search' %}">Search</a>
+  </nav>
+
+  <section class="library-container soft-card">
+    <h2 class="panel-title">Your Library</h2>
+    <p class="library-desc">All the books you've added will appear here. Click on any book to view details, notes, and progress.</p>
+
+    <div id="bookList" class="book-grid"></div>
+  </section>
+
+  <template id="bookCardTemplate">
+    <div class="book-card petal-card">
+      <h3 class="book-title"></h3>
+      <p class="book-author"></p>
+      <p class="book-status"></p>
+      <button class="view-details btn-sakura">Details</button>
+    </div>
+  </template>
+
+  <script src="{% static 'js/javascript.js' %}"></script>
+
+
+</body>
+</html>

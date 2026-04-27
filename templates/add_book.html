@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book</title>
+
+  <!-- Correct Django static path -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="sakura-bg">
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'add_book' %}" class="active-link">Add Book</a>
+    <a href="{% url 'library' %}">Library</a>
+    <a href="{% url 'search' %}">Search</a>
+  </nav>
+
+  <!-- Add Book Form -->
+  <section class="add-book soft-card">
+    <h2 class="panel-title">Add a Book</h2>
+
+    <form id="bookForm" class="auth-form" method="POST">
+      {% csrf_token %}
+
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" required>
+
+      <label for="author">Author</label>
+      <input id="author" name="author" type="text" required>
+
+      <label for="chapter">Favourite Chapter</label>
+      <input id="chapter" name="chapter" type="text">
+
+      <label for="notes">Notes / Quotes</label>
+      <textarea id="notes" name="notes" class="notes-box"></textarea>
+
+      <label for="status">Reading Status</label>
+      <select id="status" name="status" class="status-select">
+        <option value="to-read">To Read</option>
+        <option value="reading">Reading</option>
+        <option value="finished">Finished</option>
+      </select>
+
+      <button type="submit" class="btn-sakura">Save Book</button>
+    </form>
+  </section>
+
+  <script src="{% static 'js/javascript.js' %}"></script>
+
+</body>
+</html>
