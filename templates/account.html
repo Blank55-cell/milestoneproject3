@@ -6,25 +6,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account - BookVault</title>
-
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sakura-bg"> 
 
   <nav class="nav-bar soft-nav">
     <a href="{% url 'home' %}">Home</a>
-
-    <!-- Navigation links for toggling panels via your javascript.js -->
     <a href="#" id="navLogin">Sign In</a>
     <a href="#" id="navRegister">Register</a>
   </nav>
   
   <section class="auth-container">
 
+    <!-- Error Message Display -->
+    {% if error %}
+    <div class="soft-card" style="color: #b84a7c; text-align: center; margin-bottom: 1rem; border: 1px solid #d86a9a;">
+      {{ error }}
+    </div>
+    {% endif %}
+
     <!-- Login panel -->
     <div id="loginPanel" class="auth-panel soft-card">
       <h2 class="panel-title">Sign In</h2>
-      <form id="loginForm" method="post" class="auth-form">
+      <!-- Added explicit action to ensure it hits your account view -->
+      <form id="loginForm" method="post" action="{% url 'account' %}" class="auth-form">
         {% csrf_token %}
         <label for="loginEmail">Email</label>
         <input type="email" id="loginEmail" name="email" required>
@@ -34,19 +39,20 @@
 
         <button type="submit" class="btn-sakura">Sign In</button>
       </form>
-
       <p><a href="#" id="linkForgot" class="small-link">Forgot your password?</a></p>
     </div>
 
     <!-- Register panel -->
     <div id="registerPanel" class="auth-panel hidden soft-card">
       <h2 class="panel-title">Create Account</h2>
-      <form id="registerForm" method="post" class="auth-form">
+      <!-- Added explicit action here too -->
+      <form id="registerForm" method="post" action="{% url 'account' %}" class="auth-form">
         {% csrf_token %}
         <label for="regUsername">Username</label>
         <input type="text" id="regUsername" name="username" required>
 
         <label for="regEmail">Email</label>
+        <!-- Changed name to 'email' to match views.py expected POST data -->
         <input type="email" id="regEmail" name="email" required>
 
         <label for="regPassword">Password</label>
@@ -63,17 +69,13 @@
         {% csrf_token %}
         <label for="forgotEmail">Email</label>
         <input type="email" id="forgotEmail" name="email" required>
-
         <button type="submit" class="btn-sakura">Send Reset Link</button>
       </form>
-
       <p><a href="#" id="backToLogin" class="small-link">Back to login</a></p>
     </div>
 
   </section>
 
-
   <script src="{% static 'js/javascript.js' %}"></script>
-
 </body>
 </html>
