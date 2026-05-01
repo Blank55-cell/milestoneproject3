@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ book.title }}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="sakura-bg">
+
+  <nav class="nav-bar soft-nav">
+    <a href="{% url 'library' %}">Back to Library</a>
+  </nav>
+
+  <section class="soft-card">
+    <h2>{{ book.title }}</h2>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Status:</strong> {{ book.status }}</p>
+    <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter }}</p>
+    <p><strong>Notes:</strong> {{ book.notes }}</p>
+  </section>
+
+</body>
+</html>
