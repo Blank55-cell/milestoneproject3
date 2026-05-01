@@ -87,12 +87,19 @@ body {
 
 /* Auth pages */
 .auth-container {
-  max-width: 380px;
+  max-width: 450px;
   margin: 4rem auto;
-  padding: 2rem;
-  background: #ffffffcc;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(200, 120, 150, 0.15);
+  padding: 1rem;
+}
+
+.auth-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-form label {
@@ -104,7 +111,9 @@ body {
 
 .auth-form input {
   width: 100%;
+  box-sizing: border-box;
   padding: 0.7rem;
+  margin-bottom: 1rem;
   border: 1px solid #f3c9d8;
   border-radius: 8px;
   background: #fff;
@@ -114,6 +123,11 @@ body {
   outline: none;
   border-color: #d86a9a;
   box-shadow: 0 0 0 3px rgba(216, 106, 154, 0.2);
+}
+
+.auth-container .soft-card {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .soft-link {
@@ -126,7 +140,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* Home page */
