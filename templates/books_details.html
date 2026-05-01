@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Pulls title dynamically for the browser tab -->
   <title>{{ book.title }}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body class="sakura-bg">
 
   <nav class="nav-bar soft-nav">
@@ -15,6 +15,7 @@
 
   <section class="soft-card">
     <h2>{{ book.title }}</h2>
+    <!-- Displays specific model fields for the selected book -->
     <p><strong>Author:</strong> {{ book.author }}</p>
     <p><strong>Status:</strong> {{ book.status }}</p>
     <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter }}</p>
