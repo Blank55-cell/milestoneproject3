@@ -3,46 +3,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Library</title>
-
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Search Books</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body class="sakura-bg">
 
-  <nav class="nav-bar soft-nav">
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'add_book' %}">Add Book</a>
-    <a href="{% url 'library' %}" class="active-link">Library</a>
-    <a href="{% url 'search' %}">Search</a>
-  </nav>
+    <nav class="nav-bar soft-nav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'library' %}">Library</a>
+        <a href="{% url 'search' %}" class="active-link">Search</a>
+    </nav>
 
-  <section class="library-container soft-card">
-    <h2 class="panel-title">Your Library</h2>
-    <p class="library-desc">
-      All the books you've added will appear here. Click on any book to view details, notes, and progress.
-    </p>
+    <section class="search-container soft-card">
+        <h2 class="panel-title">Search Your Library</h2>
 
-    <div class="book-grid">
-      {% for book in books %}
-        <div class="book-card petal-card">
-          <h3 class="book-title">{{ book.title }}</h3>
-          <p class="book-author">{{ book.author }}</p>
-          <p class="book-status">{{ book.status }}</p>
+        <!-- GET method puts the search query 'q' into the URL -->
+        <form id="searchForm" class="search-form" method="GET" action="{% url 'search' %}">
+            <input 
+                type="text" 
+                name="q" 
+                class="search-input" 
+                placeholder="Search by title or author..."
+                value="{{ query|default:'' }}"
+                required
+            >
+            <button type="submit" class="btn-sakura">Search</button>
+        </form>
 
-          <div class="button-row">
-            <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
-            <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete</a>
-          </div>
+        <div id="searchResults" class="results-area">
+            {% if query %}
+                <!-- Renders results only if a query has been submitted -->
+                {% for book in books %}
+                    <div class="book-card soft-card">
+                        <h3>{{ book.title }}</h3>
+                        <p>{{ book.author }}</p>
+                        <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
+                    </div>
+                {% empty %}
+                    <p>No matches found.</p>
+                {% endfor %}
+            {% endif %}
         </div>
-      {% empty %}
-        <p>No books yet. Add one!</p>
-      {% endfor %}
-    </div>
-
-  </section>
+    </section>
 
 </body>
 </html>
