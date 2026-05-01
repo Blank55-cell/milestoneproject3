@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
@@ -84,11 +84,12 @@ def logout_view(request):
 
 @login_required
 def delete_book(request, book_id):
-    book = Book.objects.get(id=book_id, user=request.user)
+    # Updated to use get_object_or_404 to prevent 500 errors
+    book = get_object_or_404(Book, id=book_id, user=request.user)
     book.delete()
     return redirect('library')
 
 @login_required
 def book_details(request, book_id):
-    book = Book.objects.get(id=book_id, user=request.user)
+    book = get_object_or_404(Book, id=book_id, user=request.user)
     return render(request, 'book_details.html', {'book': book})
