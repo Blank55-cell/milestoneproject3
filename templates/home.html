@@ -1,77 +1,26 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BookVault</title>
-
+  <!-- Pulls title dynamically for the browser tab -->
+  <title>{{ book.title }}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sakura-bg">
 
   <nav class="nav-bar soft-nav">
-    <a href="{% url 'home' %}" class="active-link">Home</a>
-    <a href="{% url 'add_book' %}">Add Book</a>
-    <a href="{% url 'library' %}">Library</a>
-    <a href="{% url 'search' %}">Search</a>
+    <a href="{% url 'library' %}">Back to Library</a>
   </nav>
-  
-  <section class="intro-container soft-card">
-    <h1 class="intro-title">BookVault</h1>
-    <p class="intro-text">
-      A calm space to store your books, notes, and favourite chapters.  
-      Keep your reading journey organized and beautifully simple.
-    </p>
 
-    <div class="intro-actions">
-      <a href="{% url 'add_book' %}" class="btn-sakura">Add Your First Book</a>
-      <a href="{% url 'library' %}" class="btn-outline">View Library</a>
-    </div>
+  <section class="soft-card">
+    <h2>{{ book.title }}</h2>
+    <!-- Displays specific model fields for the selected book -->
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Status:</strong> {{ book.status }}</p>
+    <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter }}</p>
+    <p><strong>Notes:</strong> {{ book.notes }}</p>
   </section>
-
-  <section class="about-section soft-card">
-    <h2 class="panel-title">What is BookVault?</h2>
-    <p class="about-text">
-      BookVault is your personal reading companion. Whether you're tracking your progress,
-      saving notes, or keeping a list of books you want to revisit, everything stays neatly
-      organized in one place. Designed to be simple, serene, and distraction‑free.
-    </p>
-  </section>
-
-  <section class="features-section">
-    <h2 class="panel-title">Features</h2>
-
-    <div class="features-grid">
-      <div class="feature-card petal-card">
-        <h3>Track Your Books</h3>
-        <p>Save titles, authors, and your reading status with ease.</p>
-      </div>
-
-      <div class="feature-card petal-card">
-        <h3>Store Notes</h3>
-        <p>Keep your thoughts, quotes, and chapter notes all in one place.</p>
-      </div>
-
-      <div class="feature-card petal-card">
-        <h3>Search Instantly</h3>
-        <p>Find books by title, author, or keywords from your notes.</p>
-      </div>
-
-      <div class="feature-card petal-card">
-        <h3>Clean & Calm Design</h3>
-        <p>A soft blossom-inspired interface that feels peaceful to use.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer soft-nav">
-    <p>BookVault © 2026 — Built with care.</p>
-  </footer>
-
-  <script src="{% static 'js/javascript.js' %}"></script>
-
 
 </body>
 </html>
