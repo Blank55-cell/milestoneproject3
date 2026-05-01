@@ -140,3 +140,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WHITENOISE_IGNORE_MISSING_FILES = True
+
+LOGIN_URL = 'account'
+LOGIN_REDIRECT_URL = 'library'
