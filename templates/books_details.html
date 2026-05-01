@@ -1,26 +1,46 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Pulls title dynamically for the browser tab -->
-  <title>{{ book.title }}</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The || "Book" prevents a crash if title is missing -->
+    <title>{{ book.title|default:"Book Details" }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sakura-bg">
 
-  <nav class="nav-bar soft-nav">
-    <a href="{% url 'library' %}">Back to Library</a>
-  </nav>
+    <nav class="nav-bar soft-nav">
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'library' %}">Back to Library</a></li>
+        </ul>  
+    </nav>
 
-  <section class="soft-card">
-    <h2>{{ book.title }}</h2>
-    <!-- Displays specific model fields for the selected book -->
-    <p><strong>Author:</strong> {{ book.author }}</p>
-    <p><strong>Status:</strong> {{ book.status }}</p>
-    <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter }}</p>
-    <p><strong>Notes:</strong> {{ book.notes }}</p>
-  </section>
+    <section class="details-container soft-card">
+        {% if book %}
+            <h2 class="panel-title">{{ book.title }}</h2>
+            
+            <div class="petal-card">
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p><strong>Status:</strong> {{ book.status }}</p>
+                <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter|default:"None listed" }}</p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+                <p><strong>Notes:</strong></p>
+                <p class="notes-text">{{ book.notes|default:"No notes added yet." }}</p>
+            </div>
 
+            <div class="button-row" style="margin-top: 2rem;">
+                <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete this Book</a>
+            </div>
+        {% else %}
+            <h2 class="panel-title">Book not found</h2>
+            <p>We couldn't retrieve the details for this book.</p>
+            <a href="{% url 'library' %}" class="btn-sakura">Return to Library</a>
+        {% endif %}
+    </section>
+
+    <script src="{% static 'js/javascript.js' %}"></script>
 </body>
 </html>
