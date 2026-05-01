@@ -21,22 +21,28 @@
 
   <section class="library-container soft-card">
     <h2 class="panel-title">Your Library</h2>
-    <p class="library-desc">All the books you've added will appear here. Click on any book to view details, notes, and progress.</p>
+    <p class="library-desc">
+      All the books you've added will appear here. Click on any book to view details, notes, and progress.
+    </p>
 
-    <div id="bookList" class="book-grid"></div>
-  </section>
+    <div class="book-grid">
+      {% for book in books %}
+        <div class="book-card petal-card">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">{{ book.author }}</p>
+          <p class="book-status">{{ book.status }}</p>
 
-  <template id="bookCardTemplate">
-    <div class="book-card petal-card">
-      <h3 class="book-title"></h3>
-      <p class="book-author"></p>
-      <p class="book-status"></p>
-      <button class="view-details btn-sakura">Details</button>
+          <div class="button-row">
+            <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
+            <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete</a>
+          </div>
+        </div>
+      {% empty %}
+        <p>No books yet. Add one!</p>
+      {% endfor %}
     </div>
-  </template>
 
-  <script src="{% static 'js/javascript.js' %}"></script>
-
+  </section>
 
 </body>
 </html>
