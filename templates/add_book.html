@@ -4,27 +4,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Book</title>
-
-  <!-- Correct Django static path -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sakura-bg">
 
-  <!-- Navigation -->
   <nav class="nav-bar">
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'add_book' %}" class="active-link">Add Book</a>
     <a href="{% url 'library' %}">Library</a>
-    <a href="{% url 'search' %}">Search</a>
   </nav>
 
-  <!-- Add Book Form -->
   <section class="add-book soft-card">
     <h2 class="panel-title">Add a Book</h2>
 
-    <form id="bookForm" class="auth-form" method="POST">
+    <form method="POST" class="auth-form">
+      <!-- Security token required for Django POST requests -->
       {% csrf_token %}
 
       <label for="title">Title</label>
@@ -49,8 +44,6 @@
       <button type="submit" class="btn-sakura">Save Book</button>
     </form>
   </section>
-
-  <script src="{% static 'js/javascript.js' %}"></script>
 
 </body>
 </html>
