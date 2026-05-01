@@ -172,10 +172,49 @@ Search errors, form handling bugs, or data not saving/displaying correctly.
 
 | Bug | Root Issue | How I Fixed It |
 |-----|------------|----------------|
+| Forgot Password Link Not Working | The JS looked for `linkForgot` but the HTML used a different ID, so `getElementById()` returned null | Matched the JS ID to the HTML so the event listener attached correctly |
+| Login/Register Buttons Throwing Null Errors | VS Code showed “Cannot read properties of null (reading 'onclick')” because the HTML IDs didn’t match the JS (`loginPanel`, `registerPanel`) | Updated the HTML IDs to match the JS naming |
+| Reset Panel Never Opening | `resetLink` didn’t exist on most pages, so the event listener silently failed | Wrapped the listener in optional chaining (`?.addEventListener`) so it only runs when the element exists |
+| Back Buttons Not Responding | The HTML was missing the IDs `backToLogin` and `resetBack`, so the JS references pointed to null | Added the correct IDs to the HTML buttons |
+| Panels Flashing on Page Load | Panels didn’t start with the `hidden` class, so they were visible before JS ran | Added `class="hidden"` to all non‑default panels |
+| Console Errors on Pages Without Auth UI | JS ran globally, but some pages didn’t contain the panel elements | Wrapped all event listeners in optional chaining to avoid null reference errors |
+| Register Button Opening Wrong Panel | The Register button had the wrong ID in the HTML (`registerBtn` instead of `navRegister`) | Updated the HTML to use the correct ID |
+| Hidden Class Not Working | Another stylesheet overrode `.hidden`, so `display: none` didn’t apply | Ensured `.hidden { display: none; }` was defined globally and not overridden |
 
 
 
 ---
+
+
+
+## SQLite / Database Bugs I Ran Into
+
+| Bug ID | What Happened | Why It Happened | Fix |
+|--------|----------------|------------------|------|
+| S001 | Tables didn’t exist when running the server | I forgot to run migrations after creating models | Ran `makemigrations` + `migrate` |
+| S002 | Foreign key error when saving a book | Book model requires user_id but I wasn’t passing a user | Added `user=request.user` in add_book view |
+| S003 | Category relationships didn’t save | I created the BookCategory model but never added logic to save categories | Added logic to create BookCategory entries |
+| S004 | Database kept old fields after I changed models | SQLite doesn’t auto‑update schema | Deleted db.sqlite3 and migrations, then recreated them |
+| S005 | Duplicate categories appeared | I didn’t enforce unique names in Category | Added `unique=True` to Category.name |
+| S006 | Search queries were slow | I used `icontains` on a large table without indexing | Added an index on title field |
+| S007 | Wrong data types in DBML vs Django | I used varchar in DBML but Django uses CharField | Updated DBML to match Django’s field types |
+| S008 | BookCategory table didn’t enforce uniqueness | I forgot to add a unique constraint on (book, category) | Added `unique_together = ('book', 'category')` |
+
+---
+
+## Python / Django Bugs I Ran Into
+
+| Bug ID | What Happened | Why It Happened | Fix |
+|--------|----------------|------------------|------|
+| P001 | Adding a book crashed with “NOT NULL constraint failed: books.user_id” | My Book model requires a user FK, but my add_book view didn’t pass request.user | Added `user=request.user` when creating the Book |
+| P002 | Login page broke with “AttributeError: module 'accounts.views' has no attribute 'login_view'” | I referenced login_view in urls.py but never actually created the function | Added a proper login_view function in accounts/views.py |
+| P003 | Library page showed everyone’s books | I used `Book.objects.all()` instead of filtering by the logged‑in user | Changed it to `Book.objects.filter(user=request.user)` |
+| P004 | Search returned books from other users | Same issue — I forgot to filter by user in the search view | Updated search to filter by both user and title |
+| P005 | Django complained about 18 unapplied migrations | I added new models but never ran makemigrations/migrate | Ran `python manage.py makemigrations` and `python manage.py migrate` |
+| P006 | Server crashed after removing settings.py from Git | Git removed the file from disk, not just from tracking | Restored it using `git checkout -- bookvault/settings.py` |
+| P007 | “TemplateDoesNotExist” error on /add/ | I forgot to create add_book.html in templates | Added the missing template file |
+| P008 | “Reverse for 'library' not found” | My redirect used a URL name that didn’t exist | Added the correct name in urls.py |
+
 
 ## Expectations vs Actual Outcomes
 
