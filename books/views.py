@@ -11,9 +11,14 @@ def add_book(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         author = request.POST.get('author')
-        favourite_chapter = request.POST.get('favourite_chapter')
+
+        # grabbing the chapter field from the form (this matches the HTML name)
+        favourite_chapter = request.POST.get('chapter')
+
         notes = request.POST.get('notes')
-        status = request.POST.get('reading_status')
+
+        # same thing here, just pulling the status straight from the form
+        status = request.POST.get('status')
 
         # Save the book with the logged-in user
         Book.objects.create(
@@ -25,6 +30,7 @@ def add_book(request):
             status=status
         )
 
+        # once the book is saved, just send me back to the library page
         return redirect('library')
 
     return render(request, 'add_book.html', {'name': 'Add Book'})
@@ -32,6 +38,7 @@ def add_book(request):
 
 @login_required
 def library(request):
+    print("Current user:", request.user)  # TEMP check
     # Only show books belonging to the logged-in user
     books = Book.objects.filter(user=request.user)
     return render(request, 'library.html', {'name': 'Library', 'books': books})
@@ -56,3 +63,15 @@ def search(request):
 @login_required
 def account(request):
     return render(request, 'account.html', {'name': 'Account'})
+
+
+@login_required
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id, user=request.user)
+    book.delete()
+    return redirect('library')
+
+@login_required
+def book_details(request, book_id):
+    book = Book.objects.get(id=book_id, user=request.user)
+    return render(request, 'book_details.html', {'book': book})
