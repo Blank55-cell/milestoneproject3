@@ -1,13 +1,14 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
-# Main URL configuration for the BookVault project
+# These are the actual routes for my accounts app
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # This points to the page where users sign up
+    path('register/', views.register_view, name='register'),
     
-    # Connecting the books app for the main library features
-    path('', include('books.urls')),
+    # This points to the logic for signing in
+    path('login/', views.login_view, name='login'),
     
-    # I'm including the accounts app urls here so register and login work properly
-    path('', include('accounts.urls')),
+    # This points to the logic for logging out
+    path('logout/', views.logout_view, name='logout'),
 ]
