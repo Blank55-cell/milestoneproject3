@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from books import views as book_views # Import your books views directly
 
+# This is the main URL config for the whole BookVault project
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # I'm including the books app URLs here for things like the home page and library
     path('', include('books.urls')),
-    #Should point 'account/' specifically to the view
-    path('account/', book_views.account, name='account'),
-    path('logout/', book_views.logout_view, name='logout'),
+    
+    # This part is super important—it connects my accounts app 
+    # so the login and register views actually work
+    path('', include('accounts.urls')),
 ]
