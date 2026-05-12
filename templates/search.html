@@ -5,65 +5,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Books - BookVault</title>
+    <!-- Meta description added for SEO/Lighthouse scoring -->
+    <meta name="description" content="Search through your personal BookVault library collection.">
+    <title>Search Books | BookVault</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sakura-bg">
 
     <!-- Main navigation bar -->
-    <nav class="nav-bar soft-nav">
-        <ul class="nav-list">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'add_book' %}">Add Book</a></li>
-            <li><a href="{% url 'library' %}">Library</a></li>
-            <li><a href="{% url 'search' %}" class="active-link">Search</a></li>
-        </ul>  
-    </nav>
+    <header>
+        <nav class="nav-bar soft-nav" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'add_book' %}">Add Book</a></li>
+                <li><a href="{% url 'library' %}">Library</a></li>
+                <li><a href="{% url 'search' %}" class="active-link" aria-current="page">Search</a></li>
+            </ul>  
+        </nav>
+    </header>
 
-    <section class="search-container soft-card">
-        <h2 class="panel-title">Search Your Library</h2>
-        <p class="search-desc">Find books by title, author, or keywords from your notes.</p>
+    <main>
+        <section class="search-container soft-card" aria-labelledby="search-heading">
+            <h2 id="search-heading" class="panel-title">Search Your Library</h2>
+            <p class="search-desc">Find books by title, author, or keywords from your notes.</p>
 
-        <!-- Form sends data to the 'search' view using GET so terms appear in the URL -->
-        <form id="searchForm" class="search-form" method="GET" action="{% url 'search' %}">
-            <!-- 'name="q"' is the key the Python view uses to find the search text -->
-            <input 
-                type="text" 
-                id="searchInput" 
-                name="q" 
-                class="search-input" 
-                placeholder="Search your saved books..."
-                value="{{ query|default:'' }}"
-                required
-            >
-            <button type="submit" class="btn-sakura">Search</button>
-        </form>
+            <!-- Form sends data to the 'search' view using GET so terms appear in the URL -->
+            <form id="searchForm" class="search-form" method="GET" action="{% url 'search' %}" role="search">
+                <!-- 'name="q"' is the key the Python view uses to find the search text -->
+                <label for="searchInput" class="sr-only">Search books</label>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    name="q" 
+                    class="search-input" 
+                    placeholder="Search your saved books..."
+                    value="{{ query|default:'' }}"
+                    required
+                >
+                <button type="submit" class="btn-sakura">Search</button>
+            </form>
 
-        <!-- Container for displaying results after the form is submitted -->
-        <div id="searchResults" class="results-area">
-            {% if query %}
-                <h3 class="search-results-title">Results for "{{ query }}"</h3>
-                
-                <div class="book-grid">
-                    <!-- Loops through the list of books sent back by the view -->
-                    {% for book in books %}
-                        <div class="book-card soft-card">
-                            <h3>{{ book.title }}</h3>
-                            <p><strong>Author:</strong> {{ book.author }}</p>
-                            <p><strong>Status:</strong> {{ book.status }}</p>
-                            <div class="card-actions">
-                                <!-- Links to the specific book details page using the book ID -->
-                                <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
+            <!-- Container for displaying results after the form is submitted -->
+            <div id="searchResults" class="results-area">
+                {% if query %}
+                    <h3 class="search-results-title">Results for "{{ query }}"</h3>
+                    
+                    <div class="book-grid">
+                        <!-- Loops through the list of books sent back by the view -->
+                        {% for book in books %}
+                            <article class="book-card soft-card">
+                                <h3>{{ book.title }}</h3>
+                                <p><strong>Author:</strong> {{ book.author }}</p>
+                                <p><strong>Status:</strong> {{ book.status }}</p>
+                                <div class="card-actions">
+                                    <!-- Links to the specific book details page using the book ID -->
+                                    <a href="{% url 'book_details' book.id %}" class="btn-sakura" aria-label="View details for {{ book.title }}">Details</a>
+                                </div>
+                            </article>
+                        <!-- Message shown if the search returns zero matches -->
+                        {% empty %}
+                            <div class="no-results-container">
+                                <p class="no-results">No books found matching your search.</p>
                             </div>
-                        </div>
-                    <!-- Message shown if the search returns zero matches -->
-                    {% empty %}
-                        <p class="no-results">No books found matching your search.</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
 
     <!-- Custom scripts for UI interactions -->
     <script src="{% static 'js/javascript.js' %}"></script>
