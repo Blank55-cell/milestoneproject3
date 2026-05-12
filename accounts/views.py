@@ -47,7 +47,8 @@ def register_view(request):
 # Handle login
 def login_view(request):
     if request.method == "POST":
-        email = request.POST.get("email")
+        # Added .strip().lower() to match registration logic
+        email = request.POST.get("email").strip().lower()
         password = request.POST.get("password")
 
         if not email or not password:
