@@ -26,7 +26,7 @@
     <!-- Login Panel: Submits data to the 'account' view -->
     <div id="loginPanel" class="auth-panel soft-card">
       <h2 class="panel-title">Sign In</h2>
-      <form id="loginForm" method="post" action="{% url 'account' %}" class="auth-form">
+      <form id="loginForm" method="post" action="{% url 'login' %}" class="auth-form">
         {% csrf_token %}
         <label for="loginEmail">Email</label>
         <input type="email" id="loginEmail" name="email" required>
@@ -39,7 +39,7 @@
     <!-- Registration Panel: Hidden by default until toggled by JS -->
     <div id="registerPanel" class="auth-panel hidden soft-card">
       <h2 class="panel-title">Create Account</h2>
-      <form id="registerForm" method="post" action="{% url 'account' %}" class="auth-form">
+      <form id="registerForm" method="post" action="{% url 'register' %}" class="auth-form">
         {% csrf_token %}
         <label for="regUsername">Username</label>
         <input type="text" id="regUsername" name="username" required>
