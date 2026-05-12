@@ -36,6 +36,9 @@ if (backToLogin) {
     backToLogin.onclick = () => show(loginPanel);
 }
 
+/* 
+  COMMENTED OUT TO PREVENT CONFLICT WITH DJANGO HTML FORMS
+  
 //  Handle login (CSRF FIXED)
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -100,3 +103,4 @@ document.getElementById("registerForm")?.addEventListener("submit", async (e) =>
     alert(data.error || "Could not create account");
   }
 });
+*/
