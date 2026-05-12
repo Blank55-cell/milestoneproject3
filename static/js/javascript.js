@@ -1,5 +1,4 @@
-/*jslint browser */
-/*jshint esversion: 6 */
+
 
 // Panels
 const loginPanel = document.getElementById("loginPanel");
