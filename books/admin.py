@@ -9,6 +9,6 @@ class BookAdmin(admin.ModelAdmin):
     """
     Configuration for the Book model in the admin panel.
     """
-    list_display = ('title', 'author', 'genre')  # Columns shown in the list view
+    list_display = ('title', 'author', 'status', 'date_added')  # Columns shown in the list view
     search_fields = ('title', 'author')         # Adds a search bar to the admin
-    list_filter = ('genre',)                    # Adds a filter sidebar
+    list_filter = ('status',)                    # Adds a filter sidebar
