@@ -1,57 +1,60 @@
 
 
-// Panels
-const loginPanel = document.getElementById("loginPanel");
-const registerPanel = document.getElementById("registerPanel");
-const forgotPanel = document.getElementById("forgotPanel");
-const resetPanel = document.getElementById("resetPanel");
+(function () {
+    "use strict";
 
-/**
- * Show a specific panel and hide others.
- * @param {HTMLElement} panel - The panel to display.
- */
-function show(panel) {
-    const panels = [loginPanel, registerPanel, forgotPanel, resetPanel];
+    // Panels
+    var loginPanel = document.getElementById("loginPanel");
+    var registerPanel = document.getElementById("registerPanel");
+    var forgotPanel = document.getElementById("forgotPanel");
+    var resetPanel = document.getElementById("resetPanel");
 
-    panels.forEach(function (p) {
-        if (p) {
-            p.classList.add("hidden");
+    // Navigation links
+    var navLogin = document.getElementById("navLogin");
+    var navRegister = document.getElementById("navRegister");
+    var linkForgot = document.getElementById("linkForgot");
+    var backToLogin = document.getElementById("backToLogin");
+
+    /**
+     * Show a specific panel and hide others.
+     * @param {HTMLElement} panel - The panel to display.
+     */
+    function show(panel) {
+        var panels = [loginPanel, registerPanel, forgotPanel, resetPanel];
+
+        panels.forEach(function (p) {
+            if (p) {
+                p.classList.add("hidden");
+            }
+        });
+
+        if (panel) {
+            panel.classList.remove("hidden");
         }
-    });
-
-    if (panel) {
-        panel.classList.remove("hidden");
     }
-}
 
-// Navigation links - Using 'if' checks to prevent errors on pages like Home
-const navLogin = document.getElementById("navLogin");
-if (navLogin) {
-    navLogin.onclick = function () {
-        show(loginPanel);
-    };
-}
+    // Event Handlers
+    if (navLogin) {
+        navLogin.onclick = function () {
+            show(loginPanel);
+        };
+    }
 
-const navRegister = document.getElementById("navRegister");
-if (navRegister) {
-    navRegister.onclick = function () {
-        show(registerPanel);
-    };
-}
+    if (navRegister) {
+        navRegister.onclick = function () {
+            show(navRegister);
+        };
+    }
 
-// Forgot password link
-const linkForgot = document.getElementById("linkForgot");
-if (linkForgot) {
-    linkForgot.onclick = function () {
-        show(forgotPanel);
-    };
-}
+    if (linkForgot) {
+        linkForgot.onclick = function () {
+            show(forgotPanel);
+        };
+    }
 
-// Back to login (from forgot panel)
-const backToLogin = document.getElementById("backToLogin");
-if (backToLogin) {
-    backToLogin.onclick = function () {
-        show(loginPanel);
-    };
-}
-
+    if (backToLogin) {
+        backToLogin.onclick = function () {
+            show(loginPanel);
+        };
+    }
+}());

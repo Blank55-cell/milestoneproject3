@@ -4,37 +4,36 @@ BookVault is a small project I'm building to keep track of books. Instead of sca
 
 ---
 
+# Wireframes
+
+I used Whimsical to plan the layout and user flow for BookVault. This helped me map out how the authentication flow connects to the main library and search features before I started coding.
+
+- [Interactive Whimsical Board](https://whimsical.com/project-314/project3-SvbFMeGhZ2RBvFT4ScK62Z)
+
+---
+
 # Quick Links
 
+- [Wireframes](#wireframes)
 - [What This Site Is For](#what-this-site-is-for)  
 - [User Stories](#user-stories)  
 - [Tools (Work in Progress)](#tools-work-in-progress)  
-- [Books Covered](#books-covered)  
 - [Who This Is For](#who-this-is-for)  
 - [Pages Used in This Project](#pages-used-in-this-project)  
 - [Features](#features)  
-- [Current Content](#current-content)  
-- [Visual Style](#visual-style)  
-- [Planned Page Layouts](#planned-page-layouts)  
-- [Roadmap](#roadmap)  
 - [Website Testing](#website-testing)  
 - [JSLint Testing](#jslint-testing)  
 - [Google Lighthouse Testing](#google-lighthouse-testing)  
 - [Python Linter Testing](#python-linter-testing)  
 - [Deployment](#deployment)  
-- [UX](#ux)  
 - [HTML Bugs](#html-bugs)  
 - [CSS Bugs](#css-bugs)  
 - [JS Bug Report](#js-bug-report)  
 - [SQLite / Database Bugs](#sqlite--database-bugs-i-ran-into)  
 - [Python / Django Bugs](#python--django-bugs-i-ran-into)  
-- [Expectations vs Actual Outcomes](#expectations-vs-actual-outcomes)  
-- [Project Purpose](#project-purpose)  
-- [Automated Testing](#automated-testing)  
+- [Manual Testing](#manual-testing)
 - [External Code Attribution](#external-code-attribution)  
 - [Disclaimer](#disclaimer)  
-- [CSS Validation](#css-validation)  
-- [Manual Testing](#manual-testing)
 
 ---
 
@@ -55,7 +54,6 @@ These are written in a natural tone to reflect how I actually use the site.
 - I want to write notes about each book so I don’t lose track of important details.  
 - I want to delete books I no longer need so my library stays tidy.  
 - I want a simple details page so I can see everything I’ve saved about a book in one place.  
-- I want book covers to appear in my library so it feels more visual and easier to browse.  
 
 ---
 
@@ -68,12 +66,6 @@ These are written in a natural tone to reflect how I actually use the site.
 
 ---
 
-# Books Covered
-
-The project starts with general book tracking and search results. More features may be added later if they make sense for the way people use the site.
-
----
-
 # Who This Is For
 
 Readers who want to keep track of their current reading progress while maintaining a clean work area, ensuring a more organised and clearer enjoyment for the books they love.
@@ -82,10 +74,12 @@ Readers who want to keep track of their current reading progress while maintaini
 
 # Pages Used in This Project
 
-- **index.html** – Homepage  
-- **add.html** – Add a new book  
-- **library.html** – View all saved books  
-- **search.html** – Look up books and check summaries  
+- **home.html** – The main dashboard and entry point.  
+- **account.html** – User profile and settings.  
+- **add_book.html** – Form to add a new book to the database.  
+- **library.html** – Displaying all saved books.  
+- **search.html** – Searching for new books and checking summaries.  
+- **books_details.html** – Viewing specific saved notes and chapter progress.  
 
 ---
 
@@ -102,98 +96,55 @@ Readers who want to keep track of their current reading progress while maintaini
 - Simple card layout for book entries  
 - Book covers pulled from Google Books  
 - Details page for each book  
-- Delete functionality  
-
----
-
-# Current Content
-
-The main focus right now is getting the core features working: storing books, displaying them cleanly, and making the search page functional.
-
----
-
-# Visual Style
-
-The design is intentionally simple. Clear typography, readable spacing, and a layout that doesn’t get in the way.
-
----
-
-# Planned Page Layouts
-
-- Cleaner book details page  
-- More structured search results  
-- Optional dark mode  
-- Improved navigation layout  
-
----
-
-# Roadmap
-
-- User accounts  
-- Better search filters  
-- Reading progress tracker  
-- Recommendations  
-- Import/export book lists  
+- Delete functionality 
 
 ---
 
 # Website Testing
 
-This section is where I keep track of all the testing I’ve done across the site, including layout checks, form behaviour, and how the site responds on different devices and browsers.
+### Validation Results
+| Feature | Tool | Image |
+| --- | --- | --- |
+| HTML | [Nu HTML Checker](https://validator.w3.org/) | ![HTML Validation](testing/html_validation.png) |
+| JavaScript | [JSHint](https://jshint.com/) | ![JS Validation](testing/js_validation.png) |
+| Performance | [Lighthouse](https://developers.google.com/web/tools/lighthouse) | ![Lighthouse Score](testing/lighthouse_results.png) |
+| Python | [CI Python Linter](https://pep8ci.herokuapp.com/) | ![Python Linter](testing/python_linter.png) |
+| CSS | [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | ![CSS Validation](testing/css_validation.png) |
 
 ---
 
 # JSLint Testing
 
-This is where I record the results from running my JavaScript through JSLint.  
-I’ll add the actual output here once I finish testing.
+I used JSHint to check my JavaScript for any syntax errors or missing parts.
 
-Things I plan to note:
+![JS Validation Results](testing/js_validation.png)
 
-- Any warnings or errors JSLint picked up  
-- What I fixed afterwards  
-- Anything I intentionally ignored and why  
+- **What I found:** The linter caught a few missing semicolons and some variables that weren't properly defined.
+- **What I fixed:** I went through and added the missing semicolons and made sure all variables were declared correctly so the code runs more reliably.
 
 ---
 
 # Google Lighthouse Testing
 
-This section is for my Lighthouse results from Chrome DevTools.  
-I’ll paste the scores and screenshots here once I run the tests.
+I ran Lighthouse in Chrome DevTools to see how the site performs and if it's easy for everyone to use.
 
-I’ll be tracking:
+![Lighthouse Results](testing/lighthouse_results.png)
 
-- Performance  
-- Accessibility  
-- Best Practices  
-- SEO  
-- Any improvements I made based on Lighthouse suggestions  
+**What I focused on:**
+- **Performance:** Making sure book covers don't slow down the page load.
+- **Accessibility:** Checking that text is easy to read against the background and adding alt text to images.
+- **Best Practices:** Making sure all links are secure.
 
 ---
 
 # Python Linter Testing
 
-This is where I’ll store the results from running a Python linter (flake8 or pylint) on my Django code.
+I ran my Django files through the PEP8 linter to make sure the code is clean and follows standard Python formatting.
 
-I’ll be noting:
+![Python Linter Results](testing/python_linter.png)
 
-- Error count  
-- Warnings  
-- Style issues  
-- What I fixed  
-- Anything I left as‑is and the reason  
-
----
-
-# Deployment
-
-Deployment will happen once the core features are stable.
-
----
-
-# UX
-
-The UX goal is to keep everything obvious: clear buttons, simple forms, and pages that explain themselves.
+- **Results:** No errors found in the final version of the code.
+- **What I fixed:** I had to shorten some long lines in `views.py` and clear out extra spaces in `models.py` to get it to pass perfectly.
 
 ---
 
@@ -274,42 +225,25 @@ The UX goal is to keep everything obvious: clear buttons, simple forms, and page
 
 ---
 
-# Expectations vs Actual Outcomes
+# Deployment
 
-This section is where I compare what I originally planned with what actually ended up working or changing during development.
-
----
-
-# Project Purpose
-
-A small, personal tool to track books in a clean, simple way.
-
----
-
-# Automated Testing
-
-Will be added later once the main logic is stable.
-
----
-
-# External Code Attribution
-
-Any external libraries or snippets will be listed here.
-
----
-
-# Disclaimer
-
-This is a personal project and not affiliated with any book publishers or APIs used.
-
----
-
-# CSS Validation
-
-Notes from W3C validation checks.
+The project is hosted on Railway. It’s set up to automatically deploy whenever I push my code changes to GitHub.
 
 ---
 
 # Manual Testing
 
-Manual checks across devices and browsers.
+I tested the site manually on different screens to make sure the layout looks right everywhere. I also checked that the database connects properly whether I’m working locally on my MSI Crosshair or checking the live site.
+
+---
+
+# External Code Attribution
+
+- Google Books API for pulling in book details and covers.
+- Django Documentation for help with the database and views.
+
+---
+
+# Disclaimer
+
+This is a personal student project and isn't affiliated with any book publishers or the APIs used.
