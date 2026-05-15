@@ -147,14 +147,27 @@ I ran Lighthouse in Chrome DevTools to see how the site performs and if it's eas
 
 I ran my Django files through the PEP8 linter to make sure the code is clean and follows standard Python formatting.
 
+### views.py
 ![Python Linter Results](testing/pythonlint/bookviewstest.png)
+
+### urls.py
 ![Python Linter Results](testing/pythonlint/bookurls.png)
+
+### models.py
 ![Python Linter Results](testing/pythonlint/bookmodels.png)
+
+### apps.py
 ![Python Linter Results](testing/pythonlint/bookapps.png)
+
+### admin.py
 ![Python Linter Results](testing/pythonlint/bookadmin.png)
+
+### accounts/views.py
 ![Python Linter Results](testing/pythonlint/accountsviews.png)
+
 - **Results:** No errors found in the final version of the code.
 - **What I fixed:** I had to shorten some long lines in `views.py` and clear out extra spaces in `models.py` to get it to pass perfectly.
+
 
 ---
 
