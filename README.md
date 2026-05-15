@@ -12,8 +12,11 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 
 ---
 
+
 # Quick Links
 
+
+- [How to Copy and Run This Project on Your Own Computer](#how-to-copy-and-run-this-project-on-your-own-computer)
 - [Wireframes](#wireframes)
 - [What This Site Is For](#what-this-site-is-for)  
 - [User Stories](#user-stories)  
@@ -42,6 +45,58 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 The goal is to keep everything simple. Each page focuses on one aspect of the site such as one page being focused on the page I bookmarked in my book. Further additions to the site will include the usage of a login and sign‑up page.
 
 ---
+
+# How to Copy and Run This Project on Your Own Computer
+
+Follow these steps to clone the project and run it locally.
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/YOUR-USERNAME/milestoneproject3.git
+```
+
+### 2. Navigate Into the Project Folder
+```bash
+cd milestoneproject3
+```
+
+### 3. Create a Virtual Environment
+```bash
+python -m venv venv
+```
+
+### 4. Activate the Virtual Environment
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**macOS / Linux:**
+```bash
+source venv/bin/activate
+```
+
+### 5. Install All Required Packages
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Apply Migrations
+```bash
+python manage.py migrate
+```
+
+### 7. Run the Development Server
+```bash
+python manage.py runserver
+```
+
+### 8. Open the Website
+Visit:
+```
+http://127.0.0.1:8000
+```
+
 
 # User Stories
 
@@ -251,6 +306,13 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 # Deployment
 
 The project is hosted on Railway. It’s set up to automatically deploy whenever I push my code changes to GitHub.
+
+
+### **[Live Railway Website](ca://s?q=Open_my_Railway_website)**  
+https://milestoneproject3-production.up.railway.app
+
+
+
 
 ---
 
