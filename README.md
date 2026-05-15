@@ -105,11 +105,11 @@ Readers who want to keep track of their current reading progress while maintaini
 ### Validation Results
 | Feature | Tool | Image |
 | --- | --- | --- |
-| HTML | [Nu HTML Checker](https://validator.w3.org/) | ![HTML Validation](testing/html_validation.png) |
-| JavaScript | [JSHint](https://jshint.com/) | ![JS Validation](testing/js_validation.png) |
-| Performance | [Lighthouse](https://developers.google.com/web/tools/lighthouse) | ![Lighthouse Score](testing/lighthouse_results.png) |
-| Python | [CI Python Linter](https://pep8ci.herokuapp.com/) | ![Python Linter](testing/python_linter.png) |
-| CSS | [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | ![CSS Validation](testing/css_validation.png) |
+| HTML | [Nu HTML Checker](https://validator.w3.org/) | ![HTML Validation](testing/htmlvalidation/htmlvalidation.png) |
+| JavaScript | [JSHint](https://jshint.com/) | ![JS Validation](testing/jslint/javascriptlint.png) |
+| Performance | [Lighthouse](https://developers.google.com/web/tools/lighthouse) | ![Lighthouse Score](testing/lighthouse/signinlighthouse.png) |
+| Python | [CI Python Linter](https://pep8ci.herokuapp.com/) | ![Python Linter](testing/pythonlint/bookviewstest.png) |
+| CSS | [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | ![CSS Validation](testing/cssvalidation/cssvalidator.png) |
 
 ---
 
@@ -117,7 +117,7 @@ Readers who want to keep track of their current reading progress while maintaini
 
 I used JSHint to check my JavaScript for any syntax errors or missing parts.
 
-![JS Validation Results](testing/js_validation.png)
+![JS Validation Results](testing/jslint/javascriptlint.png)
 
 - **What I found:** The linter caught a few missing semicolons and some variables that weren't properly defined.
 - **What I fixed:** I went through and added the missing semicolons and made sure all variables were declared correctly so the code runs more reliably.
@@ -128,7 +128,7 @@ I used JSHint to check my JavaScript for any syntax errors or missing parts.
 
 I ran Lighthouse in Chrome DevTools to see how the site performs and if it's easy for everyone to use.
 
-![Lighthouse Results](testing/lighthouse_results.png)
+![Lighthouse Results](testing/lighthouse/signinlighthouse.png)
 
 **What I focused on:**
 - **Performance:** Making sure book covers don't slow down the page load.
@@ -141,7 +141,7 @@ I ran Lighthouse in Chrome DevTools to see how the site performs and if it's eas
 
 I ran my Django files through the PEP8 linter to make sure the code is clean and follows standard Python formatting.
 
-![Python Linter Results](testing/python_linter.png)
+![Python Linter Results](testing/pythonlint/bookviewstest.png)
 
 - **Results:** No errors found in the final version of the code.
 - **What I fixed:** I had to shorten some long lines in `views.py` and clear out extra spaces in `models.py` to get it to pass perfectly.
