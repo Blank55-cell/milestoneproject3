@@ -11,7 +11,7 @@
 
 <body class="sakura-bg">
 
-  <!-- Navigation bar -->
+  <!-- Main navigation -->
   <nav class="nav-bar soft-nav">
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'add_book' %}">Add Book</a>
@@ -21,24 +21,28 @@
 
   <section class="library-container soft-card">
     <h2 class="panel-title">Your Library</h2>
-    <p class="library-desc">
-      All the books you've added will appear here.
-    </p>
+    <p class="library-desc">All the books you've added will appear here.</p>
 
     <div class="book-grid">
       {% for book in books %}
+        <!-- Each book card -->
         <div class="book-card petal-card">
           <h3 class="book-title">{{ book.title }}</h3>
           <p class="book-author">By {{ book.author }}</p>
           <p class="book-status">Status: {{ book.status }}</p>
 
           <div class="button-row">
+            <!-- Details page (works if backend is correct) -->
+            <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
+
+            <!-- Delete the book -->
             <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete</a>
           </div>
         </div>
       {% empty %}
+        <!-- Shown if the user has no books -->
         <p class="no-books">
-          Your library is empty. 
+          Your library is empty.
           <a href="{% url 'add_book' %}">Add your first book!</a>
         </p>
       {% endfor %}
@@ -49,4 +53,3 @@
   <script src="{% static 'js/javascript.js' %}"></script>
 </body>
 </html>
-
