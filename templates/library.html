@@ -26,7 +26,6 @@
     </p>
 
     <div class="book-grid">
-      <!-- Loops through the 'books' list passed from views.library -->
       {% for book in books %}
         <div class="book-card petal-card">
           <h3 class="book-title">{{ book.title }}</h3>
@@ -34,14 +33,14 @@
           <p class="book-status">Status: {{ book.status }}</p>
 
           <div class="button-row">
-            <!-- Passes the specific book ID to the details and delete views -->
-            <a href="{% url 'book_details' book.id %}" class="btn-sakura">Details</a>
             <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete</a>
           </div>
         </div>
       {% empty %}
-        <!-- Shown only if the database query returns no books -->
-        <p class="no-books">Your library is empty. <a href="{% url 'add_book' %}">Add your first book!</a></p>
+        <p class="no-books">
+          Your library is empty. 
+          <a href="{% url 'add_book' %}">Add your first book!</a>
+        </p>
       {% endfor %}
     </div>
 
@@ -50,3 +49,4 @@
   <script src="{% static 'js/javascript.js' %}"></script>
 </body>
 </html>
+
