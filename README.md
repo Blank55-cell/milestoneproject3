@@ -129,6 +129,11 @@ I used JSHint to check my JavaScript for any syntax errors or missing parts.
 I ran Lighthouse in Chrome DevTools to see how the site performs and if it's easy for everyone to use.
 
 ![Lighthouse Results](testing/lighthouse/signinlighthouse.png)
+![Lighthouse Results](testing/lighthouse/searchpagelighthouse.png)
+![Lighthouse Results](testing/lighthouse/registerpage.png)
+![Lighthouse Results](testing/lighthouse/lighthousehomepage.png)
+![Lighthouse Results](testing/lighthouse/librarylighthouse.png)
+![Lighthouse Results](testing/lighthouse/addbooklighthouse.png)
 
 **What I focused on:**
 - **Performance:** Making sure book covers don't slow down the page load.
@@ -144,8 +149,9 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 ![Python Linter Results](testing/pythonlint/bookviewstest.png)
 ![Python Linter Results](testing/pythonlint/bookurls.png)
 ![Python Linter Results](testing/pythonlint/bookmodels.png)
-![Python Linter Results](testing/)
-
+![Python Linter Results](testing/pythonlint/bookapps.png)
+![Python Linter Results](testing/pythonlint/bookadmin.png)
+![Python Linter Results](testing/pythonlint/accountsviews.png)
 - **Results:** No errors found in the final version of the code.
 - **What I fixed:** I had to shorten some long lines in `views.py` and clear out extra spaces in `models.py` to get it to pass perfectly.
 
