@@ -39,12 +39,12 @@
             show(loginPanel);
         };
     }
-
     if (navRegister) {
         navRegister.onclick = function () {
-            show(navRegister);
+            show(registerPanel);
         };
     }
+
 
     if (linkForgot) {
         linkForgot.onclick = function () {
