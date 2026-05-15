@@ -16,37 +16,41 @@
   </nav>
   
   <section class="auth-container">
-    <!-- Displays login/auth errors sent from the Django view -->
     {% if error %}
     <div class="soft-card error-box">
       {{ error }}
     </div>
     {% endif %}
 
-    <!-- Login Panel: Submits data to the 'account' view -->
+    <!-- Login Panel -->
     <div id="loginPanel" class="auth-panel soft-card">
       <h2 class="panel-title">Sign In</h2>
       <form id="loginForm" method="post" action="{% url 'login' %}" class="auth-form">
         {% csrf_token %}
         <label for="loginEmail">Email</label>
         <input type="email" id="loginEmail" name="email" required>
+
         <label for="loginPassword">Password</label>
         <input type="password" id="loginPassword" name="password" required>
+
         <button type="submit" class="btn-sakura">Sign In</button>
       </form>
     </div>
 
-    <!-- Registration Panel: Hidden by default until toggled by JS -->
+    <!-- Registration Panel -->
     <div id="registerPanel" class="auth-panel hidden soft-card">
       <h2 class="panel-title">Create Account</h2>
-      <form id="registerForm" method="post" action="{% url 'register' %}" class="auth-form">
+      <form id="registerForm" method="post" action="{% url 'account' %}" class="auth-form">
         {% csrf_token %}
         <label for="regUsername">Username</label>
         <input type="text" id="regUsername" name="username" required>
+
         <label for="regEmail">Email</label>
         <input type="email" id="regEmail" name="email" required>
+
         <label for="regPassword">Password</label>
         <input type="password" id="regPassword" name="password" required>
+
         <button type="submit" class="btn-sakura">Register</button>
       </form>
     </div>
