@@ -133,7 +133,8 @@ I ran Lighthouse in Chrome DevTools to see how the site performs and if it's eas
 ![Lighthouse Results](testing/lighthouse/registerpage.png)
 ![Lighthouse Results](testing/lighthouse/lighthousehomepage.png)
 ![Lighthouse Results](testing/lighthouse/librarylighthouse.png)
-![Lighthouse Results](testing/lighthouse/addbooklighthouse.png)
+![Lighthouse Results](testing/lighthouse/addbooklighthouse.png) 
+
 
 **What I focused on:**
 - **Performance:** Making sure book covers don't slow down the page load.
