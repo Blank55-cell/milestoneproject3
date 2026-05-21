@@ -236,6 +236,11 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 | Search layout breaking | Missing closing `<div>` | Closed tag |
 | Library not showing cards | JS targeted wrong ID | Updated JS |
 | Textarea not styled | Missing class | Added `.notes-box` |
+| Edit form inputs loading blank | Forgot to pass existing book data into the form template | Added `value="{{ book.title }}"` to the inputs |
+| Nav menu breaking on edit page | Left the menu links floating without a proper wrapper | Wrapped the links inside a standard `<ul>` list |
+| Heading structure warning | Skipped straight from an `<h1>` to an `<h3>` on the details page | Changed the subheadings to `<h2>` to keep it sequential |
+| Form labels not working | Forgot the `for` attribute on the labels | Aligned all label `for` attributes with input `id` tags |
+| Broken image links | Hardcoded relative paths broke when navigating to nested pages | Swapped to dynamic paths using `{% static %}` tags |
 
 ---
 
@@ -249,6 +254,12 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 | Shadow too strong | Old test value | Reduced blur |
 | Grid collapsing | `minmax()` too large | Adjusted value |
 | Textarea overflow | No width rule | Added `width: 100%` |
+| Style layout broke entirely | Missed a closing curly brace `}` on a dropdown style rule | Found the missing brace and added it back in |
+| Typo in background property | Accidentally typed `backgroud-color` with a missing 'n' | Fixed the spelling typo |
+| Flex layout buttons overlapping | Forgot to give the flex container a layout gap | Added `display: flex; gap: 1rem;` |
+| Invalid center alignment value | Tried using `justify-content: middle;` which isn't valid | Changed the value to `center` |
+| Text spilling out of card boxes | Used a fixed height rule that clipped text on small screens | Swapped out `height` for `min-height` so it stretches |
+| Buttons missing pointer hand | Forgot to add the hand icon cursor to custom styled links | Added `cursor: pointer;` to the button classes |
 
 ---
 
@@ -279,6 +290,7 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 | S006 | Slow search | No index | Added index |
 | S007 | DBML mismatch | Wrong types | Updated DBML |
 | S008 | Duplicate BookCategory | No constraint | Added `unique_together` |
+| S009 | Saving edit form crashed | Form select dropdown name didn't match backend lookup | Made sure `request.POST.get()` used the correct input name |
 
 ---
 
@@ -300,6 +312,11 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 | P012 | NoReverseMatch: 'book_details' not found | URL/view/template missing | Added URL + view + template |
 | P013 | Details button did nothing | It was a `<button>` with no link | Replaced with `<a href>` |
 | P014 | Delete didn’t work | No delete view/URL | Added delete_book |
+| P015 | Code check spacing warning | Only put one blank line between the new view functions | Added a second blank line to keep PEP8 happy |
+| P016 | Indentation error on save | Used a mix of tabs and spaces when writing form data logic | Cleaned up lines to use exactly 4 spaces |
+| P017 | Trailing whitespace warnings | Left accidental spaces at the very end of code lines | Deleted the empty spaces at the ends of lines |
+| P018 | 403 Forbidden error on update | Form didn't have security verification tokens | Added `{% csrf_token %}` inside the HTML form tag |
+| P019 | Edit redirect crashed | Forgot to pass the book ID back into the redirect path | Fixed redirect to use `book_id=book.id` |
 
 ---
 
