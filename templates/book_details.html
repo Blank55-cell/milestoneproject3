@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The || "Book" prevents a crash if title is missing -->
     <title>{{ book.title|default:"Book Details" }}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -31,7 +30,9 @@
                 <p class="notes-text">{{ book.notes|default:"No notes added yet." }}</p>
             </div>
 
-            <div class="button-row" style="margin-top: 2rem;">
+            <div class="button-row" style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <a href="{% url 'edit_book' book.id %}" class="btn-sakura">Edit Book</a>
+                
                 <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete this Book</a>
             </div>
         {% else %}
