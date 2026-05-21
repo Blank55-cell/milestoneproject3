@@ -5,35 +5,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Book</title>
+
+  <!-- Pulls in the global stylesheet -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body class="sakura-bg">
 
+  <!-- Main navigation bar for quick access to core pages -->
   <nav class="nav-bar">
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'add_book' %}" class="active-link">Add Book</a>
     <a href="{% url 'library' %}">Library</a>
   </nav>
 
+  <!-- Add Book form container: Allows users to submit new book entries -->
   <section class="add-book soft-card">
     <h1 class="panel-title">Add a Book</h1>
 
+    <!-- Form for creating a new book entry -->
     <form method="POST" class="auth-form">
       <!-- Security token required for Django POST requests -->
       {% csrf_token %}
 
+      <!-- Title input -->
       <label for="title">Title</label>
       <input id="title" name="title" type="text" required>
 
+      <!-- Author input -->
       <label for="author">Author</label>
       <input id="author" name="author" type="text" required>
 
+      <!-- Favourite chapter input -->
       <label for="chapter">Favourite Chapter</label>
       <input id="chapter" name="chapter" type="text">
 
+      <!-- Notes / quotes textarea -->
       <label for="notes">Notes / Quotes</label>
       <textarea id="notes" name="notes" class="notes-box"></textarea>
 
+      <!-- Reading status dropdown -->
       <label for="status">Reading Status</label>
       <select id="status" name="status" class="status-select">
         <option value="To Read">To Read</option>
@@ -41,6 +52,7 @@
         <option value="Completed">Completed</option>
       </select>
 
+      <!-- Submit button -->
       <button type="submit" class="btn-sakura">Save Book</button>
     </form>
   </section>

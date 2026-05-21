@@ -6,10 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ book.title|default:"Book Details" }}</title>
+
+    <!-- Pulls in the global stylesheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body class="sakura-bg">
 
+    <!-- Navigation bar: Links back to Home and the Library -->
     <nav class="nav-bar soft-nav">
         <ul class="nav-list">
             <li><a href="{% url 'home' %}">Home</a></li>
@@ -17,31 +21,47 @@
         </ul>  
     </nav>
 
+    <!-- Hidden H1 for accessibility + validator compliance -->
+    <h1 class="sr-only">Book Details</h1>
+
+    <!-- Main details container: Shows all information about the selected book -->
     <section class="details-container soft-card">
+
         {% if book %}
+
+            <!-- Visible page title for the book -->
             <h2 class="panel-title">{{ book.title }}</h2>
             
+            <!-- Card containing all book metadata -->
             <div class="petal-card">
                 <p><strong>Author:</strong> {{ book.author }}</p>
                 <p><strong>Status:</strong> {{ book.status }}</p>
                 <p><strong>Favourite Chapter:</strong> {{ book.favourite_chapter|default:"None listed" }}</p>
+
                 <hr style="border: 0; border-top: 1px solid #eee; margin: 1rem 0;">
+
                 <p><strong>Notes:</strong></p>
                 <p class="notes-text">{{ book.notes|default:"No notes added yet." }}</p>
             </div>
 
+            <!-- Action buttons: Edit or delete the book -->
             <div class="button-row" style="margin-top: 2rem; display: flex; gap: 1rem;">
                 <a href="{% url 'edit_book' book.id %}" class="btn-sakura">Edit Book</a>
-                
                 <a href="{% url 'delete_book' book.id %}" class="btn-sakura delete-btn">Delete this Book</a>
             </div>
+
         {% else %}
+
+            <!-- Fallback message if the book cannot be found -->
             <h2 class="panel-title">Book not found</h2>
             <p>We couldn't retrieve the details for this book.</p>
             <a href="{% url 'library' %}" class="btn-sakura">Return to Library</a>
+
         {% endif %}
     </section>
 
+    <!-- Connects the JavaScript file for UI interactions -->
     <script src="{% static 'js/javascript.js' %}"></script>
+
 </body>
 </html>
