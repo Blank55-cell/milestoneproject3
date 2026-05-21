@@ -25,6 +25,7 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 - [Pages Used in This Project](#pages-used-in-this-project)  
 - [Features](#features)  
 - [Website Testing](#website-testing)  
+- [HTML Testing](#html-testing)
 - [JSLint Testing](#jslint-testing)  
 - [Google Lighthouse Testing](#google-lighthouse-testing)  
 - [Python Linter Testing](#python-linter-testing)  
@@ -165,6 +166,39 @@ Readers who want to keep track of their current reading progress while maintaini
 | Performance | [Lighthouse](https://developers.google.com/web/tools/lighthouse) | ![Lighthouse Score](testing/lighthouse/signinlighthouse.png) |
 | Python | [CI Python Linter](https://pep8ci.herokuapp.com/) | ![Python Linter](testing/pythonlint/bookviewstest.png) |
 | CSS | [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | ![CSS Validation](testing/cssvalidation/cssvalidator.png) |
+
+---
+
+## HTML Testing
+
+All HTML files in BookVault were validated using the **Nu HTML Checker**.  
+Each page was tested after adding semantic headings and accessibility improvements.  
+Below are the validation results for each template.
+
+### Home Page  
+![Home Page HTML Test](testing/htmlvalidation.png)
+
+### Add Book Page  
+![Add Book HTML Test](testing/addbook.png)
+
+### Edit Book Page  
+![Edit Book HTML Test](testing/editbook.png)
+
+### Register Page  
+![Register HTML Test](testing/register.png)
+
+### Sign In Page  
+![Sign In HTML Test](testing/signin.png)
+
+### Library Page  
+![Library HTML Test](testing/library.png)
+
+### Search Page  
+![Search HTML Test](testing/search.png)
+
+
+
+
 
 ---
 
