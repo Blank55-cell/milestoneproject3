@@ -148,12 +148,15 @@ def edit_book(request, book_id):
     book = get_object_or_404(Book, id=book_id, user=request.user)
 
     if request.method == 'POST':
-        book.title = request.POST.get('title')   
+        book.title = request.POST.get('title')
         book.author = request.POST.get('author')
         book.favourite_chapter = request.POST.get('chapter')
         book.notes = request.POST.get('notes')
         book.status = request.POST.get('status')
         book.save()
-        return redirect('book_details', book_id=book.id) if book.title else redirect('library')
+        return redirect('book_details', book_id=book.id)
 
-    return render(request, 'edit_book.html', {'name': 'Edit Book', 'book': book})
+    return render(request, 'edit_book.html', {
+        'name': 'Edit Book',
+        'book': book
+    })
