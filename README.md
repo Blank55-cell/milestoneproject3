@@ -176,25 +176,25 @@ Each page was tested after adding semantic headings and accessibility improvemen
 Below are the validation results for each template.
 
 ### Home Page  
-![Home Page HTML Test](testing/htmlvalidation.png)
+![Home Page HTML Test](testing/htmlvalidation/htmlvalidation.png)
 
 ### Add Book Page  
-![Add Book HTML Test](testing/addbook.png)
+![Add Book HTML Test](testing/htmlvalidation/addbook.png)
 
 ### Edit Book Page  
-![Edit Book HTML Test](testing/editbook.png)
+![Edit Book HTML Test](testing/htmlvalidation/editbook.png)
 
 ### Register Page  
-![Register HTML Test](testing/register.png)
+![Register HTML Test](testing/htmlvalidation/register.png)
 
 ### Sign In Page  
-![Sign In HTML Test](testing/signin.png)
+![Sign In HTML Test](testing/htmlvalidation/signin.png)
 
 ### Library Page  
-![Library HTML Test](testing/library.png)
+![Library HTML Test](testing/htmlvalidation/library.png)
 
 ### Search Page  
-![Search HTML Test](testing/search.png)
+![Search HTML Test](testing/htmlvalidation/search.png)
 
 
 
