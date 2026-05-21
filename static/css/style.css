@@ -261,3 +261,38 @@ body {
 .book-card p {
   color: #7a3f5a;
 }
+
+/* Edit Book Specific Form Styles */
+.edit-select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #f3c9d8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.edit-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #f3c9d8;
+  border-radius: 8px;
+  background: #fff;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.edit-cancel-btn {
+  text-align: center;
+  line-height: normal;
+  padding: 0.7rem 1.2rem;
+}
