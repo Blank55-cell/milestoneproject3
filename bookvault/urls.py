@@ -26,5 +26,6 @@ urlpatterns = [
     
     # This part is super important—it connects my accounts app 
     # so the login and register views actually work
-    path('accounts', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
+
 ]
