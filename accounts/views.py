@@ -54,6 +54,14 @@ def register_view(request):
         login(request, user)
         return redirect("home")
 
-   
     return render(request, "account.html")
+
+
+def logout_view(request):
+    """
+    Logs out the user and redirects to home.
+    """
+    logout(request)
+    return redirect('home')
+
 
