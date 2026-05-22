@@ -3,6 +3,7 @@ from . import views
 
 # These are the actual routes for my accounts app
 urlpatterns = [
+    path('', views.login_view, name='account'),
     # This points to the page where users sign up
     path('register/', views.register_view, name='register'),
 
