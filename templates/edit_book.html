@@ -3,68 +3,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit: {{ book.title }}</title>
+  <meta charset="UTF-8">
+  <title>Account - BookVault</title>
 
-    <!-- Pulls in the global stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Pulls in the global stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="sakura-bg">
+<body class="sakura-bg"> 
 
-    <!-- Navigation bar: Quick links back to Home and the book's details page -->
-    <nav class="nav-bar">
-        <ul class="nav-list" style="display: flex; list-style: none; margin: 0; padding: 0; gap: 1rem;">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'book_details' book.id %}">Back to Details</a></li>
-        </ul>  
-    </nav>
+  <!-- Main navigation bar for switching between login/register panels -->
+  <nav class="nav-bar soft-nav">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="#" id="navLogin">Sign In</a>
+    <a href="#" id="navRegister">Register</a>
+  </nav>
 
-    <!-- Hidden H1 for accessibility + validator compliance -->
-    <h1 class="sr-only">Edit Book Details</h1>
+  <!-- Hidden H1 for accessibility + validator compliance -->
+  <h1 class="sr-only">Account Access</h1>
+  
+  <!-- Authentication container: Holds login and registration panels -->
+  <section class="auth-container">
 
-    <!-- Edit form container: Allows the user to update book information -->
-    <section class="soft-card">
-        <h2 class="panel-title">Edit Book Details</h2>
-        
-        <!-- Form for editing the selected book -->
-        <form method="POST" class="petal-card auth-form">
-            {% csrf_token %}
-            
-            <!-- Title field -->
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="{{ book.title }}" required>
+    <!-- Error message box (only shown when Django passes an error) -->
+    {% if error %}
+    <div class="soft-card error-box">
+      {{ error }}
+    </div>
+    {% endif %}
 
-            <!-- Author field -->
-            <label for="author">Author</label>
-            <input type="text" id="author" name="author" value="{{ book.author }}" required>
+    <!-- Login Panel -->
+    <div id="loginPanel" class="auth-panel soft-card">
+      <h2 class="panel-title">Sign In</h2>
 
-            <!-- Reading status dropdown -->
-            <label for="status">Reading Status</label>
-            <select id="status" name="status" class="edit-select">
-                <option value="Want to Read" {% if book.status == "Want to Read" %}selected{% endif %}>Want to Read</option>
-                <option value="Reading" {% if book.status == "Reading" %}selected{% endif %}>Reading</option>
-                <option value="Completed" {% if book.status == "Completed" %}selected{% endif %}>Completed</option>
-            </select>
+      <!-- Login form -->
+      <form id="loginForm" method="post" action="{% url 'login' %}" class="auth-form">
+        {% csrf_token %}
 
-            <!-- Favourite chapter field -->
-            <label for="chapter">Favourite Chapter</label>
-            <input type="text" id="chapter" name="chapter" value="{{ book.favourite_chapter }}">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" name="email" required>
 
-            <!-- Notes textarea -->
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" rows="6" class="edit-textarea">{{ book.notes }}</textarea>
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="password" required>
 
-            <!-- Action buttons: Save or cancel -->
-            <div class="edit-actions">
-                <button type="submit" class="btn-sakura">Save Changes</button>
-                <a href="{% url 'book_details' book.id %}" class="btn-outline edit-cancel-btn">Cancel</a>
-            </div>
-        </form>
-    </section>
+        <button type="submit" class="btn-sakura">Sign In</button>
+      </form>
+    </div>
 
-    <!-- Connects the JavaScript file for UI interactions -->
-    <script src="{% static 'js/javascript.js' %}"></script>
+    <!-- Registration Panel -->
+    <div id="registerPanel" class="auth-panel hidden soft-card">
+      <h2 class="panel-title">Create Account</h2>
+
+      <!-- Registration form -->
+      <form id="registerForm" method="post" action="{% url 'register' %}" class="auth-form">
+        {% csrf_token %}
+
+        <label for="regUsername">Username</label>
+        <input type="text" id="regUsername" name="username" required>
+
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" name="email" required>
+
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" name="password" required>
+
+        <button type="submit" class="btn-sakura">Register</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Connects the JavaScript file that controls panel switching -->
+  <script src="{% static 'js/javascript.js' %}"></script>
 </body>
 </html>
+
