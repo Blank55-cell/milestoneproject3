@@ -1,5 +1,4 @@
 
-
 (function () {
     "use strict";
 
@@ -20,6 +19,7 @@
      * @param {HTMLElement} panel - The panel to display.
      */
     function show(panel) {
+        // Just hiding all the panels first, then showing the one I need
         var panels = [loginPanel, registerPanel, forgotPanel, resetPanel];
 
         panels.forEach(function (p) {
@@ -39,13 +39,14 @@
             show(loginPanel);
         };
     }
+
     if (navRegister) {
         navRegister.onclick = function () {
             show(registerPanel);
         };
     }
 
-
+    // These only run if the forgot/reset stuff exists in the HTML
     if (linkForgot) {
         linkForgot.onclick = function () {
             show(forgotPanel);

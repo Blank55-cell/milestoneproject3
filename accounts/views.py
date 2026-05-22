@@ -9,6 +9,7 @@ User = get_user_model()
 def login_view(request):
     """
     Handles user login requests.
+    Using email to log in, but Django still needs the username internally.
     """
     if request.method == "POST":
         email = request.POST.get("email", "").strip().lower()
@@ -18,12 +19,23 @@ def login_view(request):
             messages.error(request, "Please provide both email and password.")
             return render(request, "account.html")
 
-        user = authenticate(request, username=email, password=password)
+        # Convert email → username
+        try:
+            user_obj = User.objects.get(email=email)
+            username = user_obj.username
+        except User.DoesNotExist:
+            messages.error(request, "Invalid credentials.")
+            return render(request, "account.html")
+
+        # Authenticate using username + password
+        user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, "Invalid credentials.")
+            return redirect("library")
+
+        messages.error(request, "Invalid credentials.")
+        return render(request, "account.html")
 
     return render(request, "account.html")
 
@@ -45,6 +57,10 @@ def register_view(request):
             messages.error(request, "Email is already registered.")
             return render(request, "account.html")
 
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken.")
+            return render(request, "account.html")
+
         user = User.objects.create_user(
             username=username,
             email=email,
@@ -52,7 +68,7 @@ def register_view(request):
         )
 
         login(request, user)
-        return redirect("home")
+        return redirect("library")
 
     return render(request, "account.html")
 
@@ -62,6 +78,5 @@ def logout_view(request):
     Logs out the user and redirects to home.
     """
     logout(request)
-    return redirect('home')
-
+    return redirect("home")
 

@@ -1,11 +1,9 @@
 """
 Views for the books application of the Book Vault project.
-Handles library management, book searching, and user authentication.
+Handles library management, book searching, and book editing.
 """
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Book
 
@@ -71,54 +69,6 @@ def search(request):
     })
 
 
-def account(request):
-    """
-    Handle user login and registration logic.
-    Redirects to home if the user is already authenticated.
-    """
-    if request.user.is_authenticated and request.method == 'GET':
-        return redirect('home')
-
-    if request.method == 'POST':
-        # Registration logic
-        if 'username' in request.POST:
-            username = request.POST.get('username')
-            email = request.POST.get('email')
-            password = request.POST.get('password')
-
-            user = User.objects.create_user(
-                username=username,
-                email=email,
-                password=password
-            )
-            login(request, user)
-            return redirect('library')
-
-        # Login logic
-        email_val = request.POST.get('email')
-        pass_val = request.POST.get('password')
-
-        user = authenticate(request, username=email_val, password=pass_val)
-
-        if user is not None:
-            login(request, user)
-            return redirect('library')
-
-        return render(request, 'account.html', {
-            'error': 'Invalid credentials'
-        })
-
-    return render(request, 'account.html', {'name': 'Account'})
-
-
-def logout_view(request):
-    """
-    Log out the current user and redirect to the home page.
-    """
-    logout(request)
-    return redirect('home')
-
-
 @login_required
 def delete_book(request, book_id):
     """
@@ -136,8 +86,6 @@ def book_details(request, book_id):
     """
     book = get_object_or_404(Book, id=book_id, user=request.user)
     return render(request, 'book_details.html', {'book': book})
-
-
 
 
 @login_required
