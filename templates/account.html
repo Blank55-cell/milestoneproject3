@@ -6,38 +6,35 @@
   <meta charset="UTF-8">
   <title>Account - BookVault</title>
 
-  <!-- Pulls in the global stylesheet -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body class="sakura-bg"> 
 
-  <!-- Main navigation bar for switching between login/register panels -->
   <nav class="nav-bar soft-nav">
     <a href="{% url 'home' %}">Home</a>
     <a href="#" id="navLogin">Sign In</a>
     <a href="#" id="navRegister">Register</a>
   </nav>
 
-  <!-- Hidden H1 for accessibility + validator compliance -->
   <h1 class="sr-only">Account Access</h1>
   
-  <!-- Authentication container: Holds login and registration panels -->
   <section class="auth-container">
 
-    <!-- Error message box (only shown when Django passes an error) -->
-    {% if error %}
-    <div class="soft-card error-box">
-      {{ error }}
-    </div>
+    <!-- Django messages (safe, won't crash template) -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="soft-card error-box">
+          {{ message }}
+        </div>
+      {% endfor %}
     {% endif %}
 
     <!-- Login Panel -->
     <div id="loginPanel" class="auth-panel soft-card">
       <h2 class="panel-title">Sign In</h2>
 
-      <!-- Login form: Sends POST request to the account view -->
-      <form id="loginForm" method="post" action="{% url 'account' %}" class="auth-form">
+      <form id="loginForm" method="post" action="{% url 'login' %}" class="auth-form">
         {% csrf_token %}
 
         <label for="loginEmail">Email</label>
@@ -54,8 +51,7 @@
     <div id="registerPanel" class="auth-panel hidden soft-card">
       <h2 class="panel-title">Create Account</h2>
 
-      <!-- Registration form: Creates a new user account -->
-      <form id="registerForm" method="post" action="{% url 'account' %}" class="auth-form">
+      <form id="registerForm" method="post" action="{% url 'register' %}" class="auth-form">
         {% csrf_token %}
 
         <label for="regUsername">Username</label>
@@ -73,8 +69,8 @@
 
   </section>
 
-  <!-- Connects the JavaScript file that controls panel switching -->
   <script src="{% static 'js/javascript.js' %}"></script>
 </body>
 </html>
+
 
