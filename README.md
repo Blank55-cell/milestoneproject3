@@ -31,6 +31,7 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 - [Python Linter Testing](#python-linter-testing)  
 - [Deployment](#deployment)  
 - [HTML Bugs](#html-bugs)  
+- [Database ERD](#database-schema-erd)
 - [CSS Bugs](#css-bugs)  
 - [JS Bug Report](#js-bug-report)  
 - [SQLite / Database Bugs](#sqlite--database-bugs-i-ran-into)  
@@ -44,6 +45,20 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 # What This Site Is For
 
 The goal is to keep everything simple. Each page focuses on one aspect of the site such as one page being focused on the page I bookmarked in my book. Further additions to the site will include the usage of a login and sign‑up page.
+
+---
+
+# Database Schema (ERD)
+
+To keep the structure of BookVault clear, I created an ERD that shows how the main tables connect — Books, Categories, Reviews, and Users. This helped me visualise how everything fits together before building the database models.
+
+**ERD Diagram:**  
+https://dbdiagram.io/d/dbforbooks-69e236a0a5db712fe57b2e96
+
+The diagram shows the relationships between users, their saved books, the categories linked to those books, and any reviews added. It also reflects the many‑to‑many setup between books and categories.
+
+
+
 
 ---
 
@@ -92,10 +107,43 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 8. Open the Website
+### 8. Open the Website 
 Visit:
-```
+
 http://127.0.0.1:8000
+
+
+
+---
+
+## Cloud Deployment Procedure (Railway)
+
+This project is fully configured to deploy straight to the cloud using Railway. Use this procedure to take your application live:
+
+### 1. Prepare Configuration Variables
+Ensure your Django project variables are protected in production. Your live configuration must pull sensitive data from environment values rather than hardcoded strings (e.g., `SECRET_KEY`, `DEBUG = False`, and database connection strings).
+
+### 2. Connect the Project to Railway
+1. Log into your **Railway.app** account dashboard via GitHub authorization.
+2. Click **New Project** in the upper-right corner of the interface.
+3. Choose **Deploy from GitHub repo** and select your project repository from the listing.
+
+### 3. Configure Production Environment Variables
+Once the repository link completes initialization, open the service dashboard, navigate to the **Variables** tab, and populate your required keys:
+* `SECRET_KEY` = *Your secure application production key*
+* `DEBUG` = `False`
+* `DATABASE_URL` = *Automatically configured by Railway if a Database service is attached*
+
+### 4. Trigger Deployment Syncs
+Railway listens for updates automatically on your linked branch. When you want to push updates to your live site, simply execute your standard Git tracking terminal commands:
+```bash
+git add .
+git commit -m "chore: deployment updates and configuration fixes"
+git push
+
+
+
+
 ```
 
 
@@ -354,7 +402,7 @@ I ran my Django files through the PEP8 linter to make sure the code is clean and
 
 ---
 
-# Deployment
+# Live Website Link
 
 The project is hosted on Railway. It’s set up to automatically deploy whenever I push my code changes to GitHub.
 
