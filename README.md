@@ -15,8 +15,7 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 
 # Quick Links
 
-
-- [How to Copy and Run This Project on Your Own Computer](#how-to-copy-and-run-this-project-on-your-own-computer)
+- [Live Website](#live-website-link)
 - [Wireframes](#wireframes)
 - [What This Site Is For](#what-this-site-is-for)  
 - [User Stories](#user-stories)  
@@ -39,6 +38,7 @@ I used Whimsical to plan the layout and user flow for BookVault. This helped me 
 - [Manual Testing](#manual-testing)
 - [External Code Attribution](#external-code-attribution)  
 - [Disclaimer](#disclaimer)  
+- [Responsive Design Testing](#responsive-design-testing)
 
 ---
 
@@ -62,7 +62,7 @@ The diagram shows the relationships between users, their saved books, the catego
 
 ---
 
-# How to Copy and Run This Project on Your Own Computer
+# Deployment 
 
 Follow these steps to clone the project and run it locally.
 
@@ -114,8 +114,6 @@ http://127.0.0.1:8000
 
 
 
----
-
 ## Cloud Deployment Procedure (Railway)
 
 This project is fully configured to deploy straight to the cloud using Railway. Use this procedure to take your application live:
@@ -146,7 +144,41 @@ git push
 
 ```
 
+---
 
+
+
+# Responsive Design Testing
+
+To ensure the user interface provides an optimal viewing and interactive experience, the application was rigorously tested across multiple devices and viewport screens using native mobile layouts and browser developer emulation tools.
+
+### Desktop Viewports
+* **Target Layouts:** Standard 1080p Monitors, Laptops (13" to 15")
+* **Observations:** The navigation links align horizontally with comfortable spacing, and the layout features a structured multi-column layout for books and detailed summaries.
+
+---
+
+### Tablet Viewports
+* **Target Layouts:** iPad Air, iPad Mini, Generic 10" Tablets
+* **Observations:** Structural layout components dynamically rescale widths gracefully. Elements wrap into streamlined vertical structures where space is restricted, preventing any overflow clipping.
+
+
+---
+
+### Mobile Viewports
+* **Target Layouts:** iPhone 13/14/15, Samsung Galaxy S22/S23, Small Viewports (up to 320px)
+* **Observations:** Form fields, interactive action buttons, and text input sections dynamically resize to occupy full container fluid widths for easy thumb interaction. The navigation bar switches seamlessly into an easy-to-read vertical structure.
+
+
+
+
+
+
+
+
+
+
+---
 # User Stories
 
 These are written in a natural tone to reflect how I actually use the site.
