@@ -155,12 +155,9 @@ To ensure the user interface provides an optimal viewing and interactive experie
 ### Desktop Viewports
 * **Target Layouts:** Standard 1080p Monitors, Laptops (13" to 15")
 * **Observations:** The navigation links align horizontally with comfortable spacing, and the layout features a structured multi-column layout for books and detailed summaries.
-![Home Phone Test](testing/responsivedesigntesting/hometest.png)
-![Add book Phone](testing/responsivedesigntesting/bookadd.png)
-![library Phone Test](testing/responsivedesigntesting/librarytest.png)
-![Search Phone Test](testing/responsivedesigntesting/searchlibrary.png)
-![Sign]
-
+[Home Laptop View](testing/responsivedesigntesting/homelaptop.png)
+[Add Book Laptop](testing/responsivedesigntesting/laptoptest.png)
+[Edit Book Page](testing/responsivedesigntesting/editbooklaptop.png)
 
 
 ---
