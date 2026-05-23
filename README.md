@@ -461,7 +461,27 @@ https://milestoneproject3-production.up.railway.app
 
 # Manual Testing
 
-I tested the site manually on different screens to make sure the layout looks right everywhere. I also checked that the database connects properly whether I’m working locally on my MSI Crosshair or checking the live site.
+I tested the site manually on different screens to make sure the layout looks right everywhere. I also checked that the database connects properly whether I’m working locally on my MSI Crosshair or checking the live site. 
+
+| Feature / Page | What I Hand-Tested | What Should Happen | What Actually Happened | Status | Bugs Found & How I Fixed Them |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Registration Form** | Filled out Username, Email, and Password on the Register panel and clicked register. | Account is created, logs me in automatically, and takes me to an empty Library page. | Worked exactly as expected. | **Pass** | *None.* |
+| **Registration Errors** | Tried to register using an email address that was already taken. | Page should reload and show an error message. | Stays on page, but the error message didn't show up at first. | **Pass** | **Fixed:** I updated `account.html` to use Django's `{% if messages %}` loop so backend validation errors actually print on the screen. |
+| **Sign In Form** | Entered my email and password on the Sign In panel and clicked submit. | Logs me in cleanly and redirects straight to my Library grid. | Worked exactly as expected. | **Pass** | *None.* |
+| **Sign In Errors** | Typed an incorrect password into the login form. | Keeps me on the login screen and shows an "Invalid credentials" error message. | Stays on page and displays error properly. | **Pass** | *None.* |
+| **Home Page Links** | Clicked the "Home" link in the navbar from different pages while logged in and logged out. | Always takes me back to the main landing page without breaking my session. | Worked exactly as expected. | **Pass** | *None.* |
+| **Navigation Links** | Clicked through "Add Book", "Library", and "Search" links in the navbar back-to-back. | Seamlessly switches between views and highlights the active page link correctly in the UI. | Worked exactly as expected. | **Pass** | *None.* |
+| **Library Page (Empty)** | Logged in as a brand new user with zero books added. | Shows the dashboard layout with a fallback message: `"Your library is empty. Add your first book!"`. | Worked exactly as expected. | **Pass** | *None.* |
+| **Add Book Form** | Went to "Add Book", filled out the title, author, status, chapter, notes, and hit save. | Saves the book to the database under my account, then redirects me back to the library where the new card appears. | Worked exactly as expected. | **Pass** | *None.* |
+| **Form Required Fields** | Left the "Title" field completely blank on the Add/Edit forms and tried to submit. | The browser stops the submission, highlights the input box, and displays a "Please fill in this field" warning. | Form didn't submit, HTML validation worked. | **Pass** | *None.* |
+| **Optional Fields Handling** | Left the "Favourite Chapter" and "Notes" sections completely blank when adding a book and hit save. | Saves the book anyway and cleanly displays "None listed" or "No notes added yet." on the details page instead of breaking or showing blank spaces. | Worked exactly as expected. | **Pass** | *None.* |
+| **Search Bar** | Typed a partial book title (like a few letters) into the search input box and hit enter. | Filters the page to only show book cards matching those letters, ignoring capital letters. | Worked exactly as expected. | **Pass** | *None.* |
+| **Book Details Page** | Clicked the "Details" button on an individual book card in the library. | Opens up the full detail layout showing all my saved notes, reading status, and favorite chapters. | Worked exactly as expected. | **Pass** | *None.* |
+| **Cancel / Back Links** | Opened a book's detail page and clicked "Back to Library", and clicked "Cancel" inside the Edit view. | Correctly aborts the action and safely returns me to the previous screen without modifying any data. | Worked exactly as expected. | **Pass** | *None.* |
+| **Edit Book Form** | Clicked "Edit Book", changed the title/notes, and clicked "Save Changes". | Saves the new text to the database and redirects me back to the updated Details page. | Pushed me straight back to the login page without saving anything. | **Pass** | **Fixed:** I realized `edit_book.html` accidentally had duplicate code from `account.html` pasted inside it, meaning the form was posting to the login view. Replaced it with the actual edit input fields and added `{% csrf_token %}`, which fixed the bug completely. |
+| **Reading Status Dropdown** | Changed a book's status from "Unread" to "Reading" or "Completed" in the dropdown and saved. | The dropdown updates the status accurately, saves it, and the new value updates perfectly on both the Library card and Details view. | Worked exactly as expected. | **Pass** | *None.* |
+| **Delete Button** | Clicked the "Delete this Book" button on a book's detail page. | Deletes the book from the database entirely and returns me back to my refreshed library dashboard. | Worked exactly as expected. | **Pass** | *None.* |
+| **URL Security** | Logged out completely, then manually typed `.../library/` or `.../add_book/` right into the browser URL bar. | Blocks me from viewing the page and automatically forces me back to the login screen. | Blocked access and redirected perfectly every time. | **Pass** | *None.* ||
 
 ---
 
